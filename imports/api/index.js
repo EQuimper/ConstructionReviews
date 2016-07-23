@@ -1,1 +1,2 @@
 import './contractors';
+import './reviews';

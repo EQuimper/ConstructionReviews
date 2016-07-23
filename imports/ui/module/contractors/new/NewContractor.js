@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
 
+import { Button } from 'semantic-react';
+
 export class NewContractor extends Component {
   handleSubmit() {
     const name = this.refs.name.value;
@@ -27,7 +29,7 @@ export class NewContractor extends Component {
           <input type="text" placeholder="Name" ref="name" />
           <input type="text" placeholder="City" ref="city" />
           <input type="text" placeholder="Province" ref="province" />
-          <button type="submit">Submit</button>
+          <Button>Submit</Button>
         </form>
       </div>
     );
