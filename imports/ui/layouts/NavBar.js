@@ -1,33 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router';
-
+import { browserHistory } from 'react-router';
 import { Menu, MenuItem } from 'semantic-react/radium';
 
 export const NavBar = () =>
   <Menu>
-    <MenuItem color="blue">
-      <Link to={"/"}>
+    <MenuItem onClick={() => browserHistory.push('/')}>
         Home
-      </Link>
     </MenuItem>
-    <MenuItem>
-      <Link to={"/contractors"}>
-        Contractors
-      </Link>
+    <MenuItem onClick={() => browserHistory.push('/contractors')}>
+      Contractors
     </MenuItem>
-    <MenuItem>
-      <Link to={"/reviews"}>
-        Reviews
-      </Link>
+    <MenuItem onClick={() => browserHistory.push('/reviews')}>
+      Reviews
     </MenuItem>
-    <MenuItem>
-      <Link to={"/contractors/new"}>
-        New Contractor
-      </Link>
+    <MenuItem onClick={() => browserHistory.push('/contractors/new')}>
+      New Contractor
     </MenuItem>
-    <MenuItem>
-      <Link to={"/reviews/new"}>
-        New Review
-      </Link>
+    <MenuItem onClick={() => browserHistory.push('/reviews/new')}>
+      New Review
     </MenuItem>
   </Menu>;

@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
 
-import { Button } from 'semantic-react';
+import { Button, Container, Field, Fields, Form } from 'semantic-react';
+
+import { CompanyName } from './formElements/CompanyName';
+import { City } from './formElements/City';
+import { Province } from './formElements/Province';
 
 export class NewContractor extends Component {
   handleSubmit() {
-    const name = this.refs.name.value;
-    const city = this.refs.city.value;
-    const province = this.refs.province.value;
+    const name = this.name.getValue();
+    const city = this.city.getValue();
+    const province = this.province.getValue();
     const slug = `${name}-${city}`;
 
     Meteor.call('addContractor', {
@@ -23,15 +27,26 @@ export class NewContractor extends Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <h1>New Contractor</h1>
-        <form onSubmit={(e) => (e.preventDefault(), this.handleSubmit())}>
-          <input type="text" placeholder="Name" ref="name" />
-          <input type="text" placeholder="City" ref="city" />
-          <input type="text" placeholder="Province" ref="province" />
-          <Button>Submit</Button>
-        </form>
-      </div>
+        <Form>
+          <Field>
+            <label>Company Name</label>
+            <CompanyName ref={ref => this.name = ref} />
+          </Field>
+          <Fields equalWidth>
+            <Field>
+              <label>City</label>
+              <City ref={ref => this.city = ref} />
+            </Field>
+            <Field>
+              <label>Province</label>
+              <Province ref={ref => this.province = ref} />
+            </Field>
+          </Fields>
+          <Button onClick={(e) => (e.preventDefault(), this.handleSubmit())}>Submit</Button>
+        </Form>
+      </Container>
     );
   }
 }
