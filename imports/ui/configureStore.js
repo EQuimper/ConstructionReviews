@@ -3,11 +3,13 @@ import { syncHistoryWithStore } from "react-router-redux";
 import { browserHistory } from "react-router";
 import createLogger from 'redux-logger';
 import thunk from 'redux-thunk';
+import promiseMiddleware from "redux-promise-middleware";
 
 import rootReducer from './reducers';
 
 const middleware = [
   createLogger(),
+  promiseMiddleware(),
   thunk,
 ];
 

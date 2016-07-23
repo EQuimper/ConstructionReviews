@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import { Meteor } from 'meteor/meteor';
 import { Provider } from 'react-redux';
 import { store } from '../../ui/configureStore';
+
 import routes from './routes';
 
 const Root = () =>

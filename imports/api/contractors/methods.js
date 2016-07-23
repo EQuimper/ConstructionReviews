@@ -1,13 +1,14 @@
 import { Meteor } from 'meteor/meteor';
 import { Contractors } from './contractors';
 
-Meteor.method({
-  addContractor(name, city, province) {
-    const contractor = new Contractors({
-      name,
-      city,
-      province,
+Meteor.methods({
+  addContractor(contractor) {
+    const newContractor = Contractors.insert({
+      name: contractor.name,
+      city: contractor.city,
+      province: contractor.province,
+      slug: contractor.slug,
     });
-    return contractor;
+    return newContractor;
   },
 });
