@@ -9,17 +9,17 @@ import { NewContractor } from '../../ui/module/contractors/new/NewContractor';
 import { NewReview } from '../../ui/module/reviews/new/NewReview';
 
 // Containers
-import ListContractors from '../../ui/module/contractors/list/ListContractors';
+import ListContractorsContainer from '../../ui/module/contractors/list/ListContractorsContainer';
 import ListReviews from '../../ui/module/reviews/list/ListReviews';
-import { ContractorsProfile } from '../../ui/module/contractors/profile/ContractorsProfile';
+import ContractorProfileContainer from '../../ui/module/contractors/profile/ContractorProfileContainer';
 
 export default (
   <Router history={history}>
     <Route path={"/"} component={App}>
       <IndexRoute component={WelcomePages} />
       <Route path={"/contractors"}>
-        <IndexRoute component={ListContractors} />
-        <Route path={"/contractors/profile/:name"} component={ContractorsProfile} />
+        <IndexRoute component={ListContractorsContainer} />
+        <Route path={"/contractors/profile/:name"} component={ContractorProfileContainer} />
         <Route path={"/contractors/new"} component={NewContractor} />
       </Route>
       <Route path={"/reviews"}>
