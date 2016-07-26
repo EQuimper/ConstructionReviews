@@ -1,6 +1,6 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
-import { Image, Menu, MenuItem } from 'semantic-react/radium';
+import { Menu, MenuItem } from 'semantic-react/radium';
 
 export const NavBar = () =>
   <Menu pointing>
@@ -21,7 +21,7 @@ export const NavBar = () =>
     </MenuItem>
     <div className="right menu">
       <MenuItem>
-        My Account <Image src="http://semantic-ui.com/images/avatar/small/daniel.jpg" avatar />
+        My Account
       </MenuItem>
     </div>
   </Menu>;

@@ -21,7 +21,11 @@ export class City extends Component {
 
   render() {
     return (
-      <Input {...this.props} onChange={this.onChange} value={this.state.city} placeholder={"City"} />
+      <Input
+        {...this.props}
+        onChange={this.onChange}
+        value={this.state.city}
+      />
     );
   }
 }

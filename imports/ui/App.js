@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { NavBar } from './layouts/NavBar';
 
 export const App = ({ children }) =>
@@ -6,3 +6,7 @@ export const App = ({ children }) =>
     <NavBar />
     {children}
   </div>;
+
+App.propTypes = {
+  children: PropTypes.element.isRequired,
+};

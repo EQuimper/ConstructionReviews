@@ -28,7 +28,6 @@ export class Province extends Component {
         onSearchStringChange={search => this.setState({ search })}
         searchString={this.state.search}
         selected={this.state.province}
-        placeholder={"Province"}
       >
         <Option value="Alberta">Alberta</Option>
         <Option value="British Columbia">British Columbia</Option>

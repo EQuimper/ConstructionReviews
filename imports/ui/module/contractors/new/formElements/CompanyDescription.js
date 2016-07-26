@@ -1,30 +1,30 @@
 import React, { Component } from 'react';
-import { Input } from 'semantic-react';
+import { Input, Text } from 'semantic-react';
 
-export class CompanyName extends Component {
+export class CompanyDescription extends Component {
 
   constructor() {
     super();
     this.state = {
-      company_name: '',
+      description: '',
     };
     this.onChange = this.onChange.bind(this);
   }
 
   onChange(e) {
-    this.setState({ company_name: e.target.value });
+    this.setState({ description: e.target.value });
   }
 
   getValue() {
-    return this.state.company_name;
+    return this.state.description;
   }
 
   render() {
     return (
-      <Input
+      <textarea
         {...this.props}
         onChange={this.onChange}
-        value={this.state.company_name}
+        value={this.state.description}
       />
     );
   }
