@@ -16,9 +16,11 @@ import {
   LabeledButton,
   Meta,
   Rating,
+  Row,
   Text,
 } from 'semantic-react';
 import { CardProfile } from './components/CardProfile';
+import { MenuActions } from './components/menu-actions/MenuActions';
 import { LoadingPage } from '../../../layouts/LoadingPage';
 
 export const ContractorProfile = ({ contractor }) => {
@@ -28,15 +30,18 @@ export const ContractorProfile = ({ contractor }) => {
       <Container>
         <Grid divided>
           <Column width={8}>
-            <Buttons>
-              <Button emphasis="positive"><Icon name="bookmark" />Bookmark</Button>
-              <Button><Icon name="share" />Share</Button>
-              <Button><Icon name="photo" />New Photo</Button>
-              <Button emphasis="negative"><Icon name="heart" />Recommended</Button>
-            </Buttons>
-            <CardProfile description={description} name={name} />
+            <Grid>
+              <Row columns={2}>
+                <Column width={9}>
+                  <CardProfile description={description} name={name} />
+                </Column>
+                <Column width={7}>
+                  <MenuActions />
+                </Column>
+              </Row>
+            </Grid>
           </Column>
-          <Column width={4}>
+          <Column width={8}>
             <div>
               <Rating star size="large" initialValue={3} max={5} /> 155 Reviews
             </div>
