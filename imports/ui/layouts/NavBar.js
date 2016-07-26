@@ -20,7 +20,7 @@ export const NavBar = () =>
       New Review
     </MenuItem>
     <div className="right menu">
-      <MenuItem>
+      <MenuItem onClick={() => browserHistory.push('/my-account')}>
         My Account
       </MenuItem>
     </div>

@@ -18,11 +18,12 @@ import {
   Rating,
   Text,
 } from 'semantic-react';
+import { CardProfile } from './components/CardProfile';
 import { LoadingPage } from '../../../layouts/LoadingPage';
 
 export const ContractorProfile = ({ contractor }) => {
   if (contractor[0] !== undefined) {
-    const { name } = contractor[0];
+    const { name, description } = contractor[0];
     return (
       <Container>
         <Grid divided>
@@ -33,27 +34,7 @@ export const ContractorProfile = ({ contractor }) => {
               <Button><Icon name="photo" />New Photo</Button>
               <Button emphasis="negative"><Icon name="heart" />Recommended</Button>
             </Buttons>
-            <Card>
-              <Image src={'http://semantic-ui.com/images/avatar2/large/elyse.png'} />
-              <Content>
-                <Header>Contractor name: {name}</Header>
-                <Meta>Roofer</Meta>
-                <Description>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Asperiores deserunt distinctio harum nostrum
-                  tempora.
-                </Description>
-                <Divider />
-                <div>
-                  <Content extra floated="left">
-                    <Icon name="thumbs up" />155 Recommended
-                  </Content>
-                  <Content extra floated="right">
-                    <Icon name="checked calendar" /> Joined 2016
-                  </Content>
-                </div>
-              </Content>
-            </Card>
+            <CardProfile description={description} name={name} />
           </Column>
           <Column width={4}>
             <div>

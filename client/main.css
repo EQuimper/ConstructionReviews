@@ -1,1 +1,62 @@
-/* CSS declarations go here */
+.welcome-page-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
+
+.welcome-page-container-blue-side,
+.welcome-page-container-red-side,
+.welcome-page-container-gray-side {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  background-size: cover;
+  background-position: center center;
+  background-blend-mode: multiply;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.9s ease;
+}
+
+.welcome-page-container-blue-side:hover,
+.welcome-page-container-red-side:hover,
+.welcome-page-container-gray-side:hover {
+  background-color: #e8f1f2;
+}
+
+.welcome-page-container-blue-side {
+  background-color: #39a2ae;
+  background-image: url("https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=cffce9bd4caba642d5c73117cd5953dc");
+}
+
+.welcome-page-container-red-side {
+  background-color: #dd403a;
+  background-image: url("https://images.unsplash.com/photo-1454694220579-9d6672b1ec2a?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=cd9483d69ae29f1f4f968b7299241573");
+}
+
+.welcome-page-container-gray-side {
+  background-color: #424c55;
+  background-image: url("https://images.unsplash.com/photo-1458829267686-b15150d4a28e?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=67f5e12033abaef95ad93459420b7934");
+}
+
+.titleContainer {
+  width: 400px;
+  display: flex;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  color: #e8f1f2;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.247059) 0px 14px 45px, rgba(0, 0, 0, 0.219608) 0px 10px 18px;
+  transition-duration: 0.7s;
+}
+
+.titleContainer:hover {
+  background-color: #e8f1f2;
+  color: #2a2d34;
+  box-shadow: rgba(0, 0, 0, 0.298039) 0px 19px 60px, rgba(0, 0, 0, 0.219608) 0px 15px 20px;
+  -webkit-transform: scale(1.1) rotate(4deg);
+  transform: scale(1.1) rotate(4deg);
+}

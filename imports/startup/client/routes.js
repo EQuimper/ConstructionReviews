@@ -3,7 +3,7 @@ import { Route, Router, IndexRoute } from 'react-router';
 import { history } from '../../ui/configureStore';
 
 import { App } from '../../ui/App';
-import { WelcomePages } from '../../ui/pages/WelcomePages';
+import { WelcomePage } from '../../ui/pages/WelcomePage';
 import { NoMatch } from '../../ui/pages/NoMatch';
 import { NewContractor } from '../../ui/module/contractors/new/NewContractor';
 import { NewReview } from '../../ui/module/reviews/new/NewReview';
@@ -12,11 +12,12 @@ import { NewReview } from '../../ui/module/reviews/new/NewReview';
 import ListContractorsContainer from '../../ui/module/contractors/list/ListContractorsContainer';
 import ListReviews from '../../ui/module/reviews/list/ListReviews';
 import ContractorProfileContainer from '../../ui/module/contractors/profile/ContractorProfileContainer';
+import { UserProfile } from '../../ui/module/user/UserProfile';
 
 export default (
   <Router history={history}>
+    <Route path={"/welcome"} component={WelcomePage} />
     <Route path={"/"} component={App}>
-      <IndexRoute component={WelcomePages} />
       <Route path={"/contractors"}>
         <IndexRoute component={ListContractorsContainer} />
         <Route path={"/contractors/profile/:name"} component={ContractorProfileContainer} />
@@ -25,6 +26,9 @@ export default (
       <Route path={"/reviews"}>
         <IndexRoute component={ListReviews} />
         <Route path={"/reviews/new"} component={NewReview} />
+      </Route>
+      <Route name="userAccount" path={"/my-account"}>
+        <IndexRoute component={UserProfile} />
       </Route>
       <Route path={"*"} component={NoMatch} />
     </Route>
