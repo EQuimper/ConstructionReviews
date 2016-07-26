@@ -29,13 +29,6 @@ export const ListContractors = ({ contractors }) =>
             <Text extra>Additional details</Text>
             <Text extra>
               <Button
-                inverted
-                className="ui right floated"
-                onClick={() => browserHistory.push(`/contractors/profile/${name}`)}
-              >
-                More Info
-              </Button>
-              <Button
                 className="ui right floated"
                 inverted
                 onClick={() => browserHistory.push(`/contractors/profile/${name}`)}

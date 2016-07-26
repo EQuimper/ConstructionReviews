@@ -1,10 +1,10 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
-import { Menu, MenuItem } from 'semantic-react/radium';
+import { Image, Menu, MenuItem } from 'semantic-react/radium';
 
 export const NavBar = () =>
-  <Menu>
-    <MenuItem onClick={() => browserHistory.push('/')}>
+  <Menu pointing>
+    <MenuItem active onClick={() => browserHistory.push('/')}>
         Home
     </MenuItem>
     <MenuItem onClick={() => browserHistory.push('/contractors')}>
@@ -19,4 +19,9 @@ export const NavBar = () =>
     <MenuItem onClick={() => browserHistory.push('/reviews/new')}>
       New Review
     </MenuItem>
+    <div className="right menu">
+      <MenuItem>
+        My Account <Image src="http://semantic-ui.com/images/avatar/small/daniel.jpg" avatar />
+      </MenuItem>
+    </div>
   </Menu>;
