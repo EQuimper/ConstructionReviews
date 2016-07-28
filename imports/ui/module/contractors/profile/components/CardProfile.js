@@ -3,18 +3,23 @@ import { Card, Content, Image, Header, Meta, Description, Divider, Icon } from '
 
 export const CardProfile = ({ name, description }) =>
   <Card>
-    <Image src={'http://semantic-ui.com/images/avatar2/large/elyse.png'} />
+    <Image
+      src={'http://liveinportland.net/wp-content/uploads/2012/12/hollywood-district-in-portland-Google-Maps.jpg'} />
     <Content>
-      <Header>Contractor name: {name}</Header>
-      <Meta>Roofer</Meta>
+      <Header>Info</Header>
+      <Divider />
+      <Meta><Icon name="location arrow" />431 10 Avenue SE Calgary</Meta>
+      <Meta><Icon name="marker" />T2G 0W3</Meta>
+      <Meta><Icon name="call square" />(403) 261-7950</Meta>
+      <Meta><Icon name="external square" /><a href="#" target="_blank">www.about.com</a></Meta>
       <Divider />
       <Description>
-        <em>Description:</em> <p>{description}</p>
+        {description}
       </Description>
       <Divider />
       <div>
         <Content extra floated="left">
-          <Icon name="thumbs up" />155 Recommended
+          <Icon name="thumbs up" /> 155 Recommended
         </Content>
         <Content extra floated="right">
           <Icon name="checked calendar" /> Joined 2016

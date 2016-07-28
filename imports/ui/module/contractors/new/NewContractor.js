@@ -25,7 +25,7 @@ export class NewContractor extends Component {
       slug,
     });
 
-    browserHistory.push('/contractors');
+    browserHistory.push(`/contractors/profile/${name}`);
   }
 
   render() {

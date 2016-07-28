@@ -1,6 +1,6 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
-import { Menu, MenuItem } from 'semantic-react/radium';
+import { Menu, MenuItem, Icon } from 'semantic-react';
 
 export const NavBar = () =>
   <Menu pointing>
@@ -20,6 +20,9 @@ export const NavBar = () =>
       New Review
     </MenuItem>
     <div className="right menu">
+      <MenuItem>
+        <Icon name="alarm outline" fitted />
+      </MenuItem>
       <MenuItem onClick={() => browserHistory.push('/my-account')}>
         My Account
       </MenuItem>

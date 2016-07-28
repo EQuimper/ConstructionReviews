@@ -32,11 +32,20 @@ export const ContractorProfile = ({ contractor }) => {
           <Column width={8}>
             <Grid>
               <Row columns={2}>
+                <Column width={2}>
+                  <Image src={'http://semantic-ui.com/images/wireframe/image.png'} size="tiny" />
+                </Column>
+                <Column width={14}>
+                  <h1>{name}</h1>
+                </Column>
+              </Row>
+              <Divider />
+              <Row columns={2}>
                 <Column width={9}>
                   <CardProfile description={description} name={name} />
                 </Column>
-                <Column width={7}>
-                  <MenuActions />
+                <Column width={5}>
+                  <MenuActions contractor={contractor[0]} />
                 </Column>
               </Row>
             </Grid>

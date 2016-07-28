@@ -60,3 +60,17 @@
   -webkit-transform: scale(1.1) rotate(4deg);
   transform: scale(1.1) rotate(4deg);
 }
+
+/* Menu Actions */
+
+.menu-actions-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  justify-content: space-around;
+}
+
+.menu-actions-list li {
+  cursor: pointer;
+}

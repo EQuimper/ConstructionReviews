@@ -19,8 +19,8 @@ export class Bookmarked extends Component {
     return (
       <MenuItem onClick={() => this.handleBookmarked()}>
         {this.state.bookmarked
-          ? <Icon name="bookmark green" />
-          : <Icon name="outline bookmark green" />
+          ? <Icon name="bookmark green" size="large" />
+          : <Icon name="outline bookmark green" size="large" />
         } Bookmark
       </MenuItem>
     );
