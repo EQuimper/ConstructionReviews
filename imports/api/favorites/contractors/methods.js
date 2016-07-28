@@ -13,3 +13,12 @@ Meteor.methods({
     return newContractorFavorite;
   },
 });
+
+Meteor.methods({
+  removeContractorFavorites(contractor) {
+    ContractorsFavorites.remove({
+      _id: contractor._id,
+    });
+    return ContractorsFavorites;
+  },
+});

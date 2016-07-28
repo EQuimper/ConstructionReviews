@@ -8,3 +8,11 @@ export const addContractorFavorite = (contractor) => {
     payload: contractor,
   };
 };
+
+export const removeContractorFavorite = (contractor) => {
+  Meteor.call('removeContractorFavorites', contractor);
+  return {
+    type: types.REMOVE_CONTRACTOR_TO_FAVORITE,
+    payload: contractor,
+  };
+};

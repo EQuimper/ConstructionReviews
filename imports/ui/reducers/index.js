@@ -1,11 +1,9 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
-//import { contractorsReducer } from './contractors';
-//import { visibilityFilter } from './visibilityFilter';
-import { favoritesReducer } from './favoritesReducer';
+import { favoriteContractorsReducer } from './favoriteContractorsReducer';
 
 export default combineReducers({
-  favorites: favoritesReducer,
+  favoriteContractors: favoriteContractorsReducer,
   routing: routerReducer,
 });

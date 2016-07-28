@@ -30,5 +30,5 @@ export const CardProfile = ({ name, description }) =>
 
 CardProfile.propTypes = {
   name: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  description: PropTypes.string,
 };
