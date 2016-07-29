@@ -2,7 +2,7 @@ import * as types from '../constants';
 
 const contractorsFavorite = JSON.parse(localStorage.getItem('contractorsFavorite'));
 
-const initialState = [...contractorsFavorite];
+const initialState = contractorsFavorite ? contractorsFavorite : [];
 
 export const favoriteContractorsReducer = (state = initialState, action) => {
   switch (action.type) {

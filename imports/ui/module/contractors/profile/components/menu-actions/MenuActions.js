@@ -2,7 +2,7 @@ import React from 'react';
 import { Icon, Menu, MenuItem } from 'semantic-react';
 
 // Components
-import { Bookmarked } from './components/Bookmarked';
+import Bookmarked from './components/Bookmarked';
 import Recommended from './components/Recommended';
 
 export const MenuActions = ({ contractor }) =>
@@ -13,6 +13,6 @@ export const MenuActions = ({ contractor }) =>
     <MenuItem>
       <Icon name="share" size="large" /> Share
     </MenuItem>
-    <Bookmarked />
+    <Bookmarked contractor={contractor} />
     <Recommended contractor={contractor} />
   </Menu>;
