@@ -4,6 +4,7 @@ import { ContractorsFavorites } from './contractorsFavorites';
 Meteor.methods({
   addContractorFavorites(contractor) {
     const newContractorFavorite = ContractorsFavorites.insert({
+      _id: contractor._id,
       name: contractor.name,
       description: contractor.description,
       city: contractor.city,
@@ -15,9 +16,9 @@ Meteor.methods({
 });
 
 Meteor.methods({
-  removeContractorFavorites(contractor) {
+  removeContractorFavorites(id) {
     ContractorsFavorites.remove({
-      _id: contractor._id,
+      _id: id,
     });
     return ContractorsFavorites;
   },

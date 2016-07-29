@@ -13,3 +13,23 @@ Meteor.methods({
     return newContractor;
   },
 });
+
+//Meteor.methods({
+//  addContractorFavorites(id) {
+//    Contractors.update(id, {
+//      $set: {
+//        favorite: true,
+//      },
+//    });
+//  },
+//});
+//
+//Meteor.methods({
+//  removeContractorFavorites(id) {
+//    Contractors.update(id, {
+//      $set: {
+//        favorite: false,
+//      },
+//    });
+//  },
+//});
