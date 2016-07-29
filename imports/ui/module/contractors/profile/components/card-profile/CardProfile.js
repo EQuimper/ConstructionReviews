@@ -1,7 +1,10 @@
 import React, { PropTypes } from 'react';
 import { Card, Content, Image, Header, Meta, Description, Divider, Icon } from 'semantic-react';
 
-export const CardProfile = ({ name, description }) =>
+// Components
+import { RecommendedCount } from './components/RecommendedCount';
+
+export const CardProfile = ({ name, description, favorite_count }) =>
   <Card>
     <Image
       src={'http://liveinportland.net/wp-content/uploads/2012/12/hollywood-district-in-portland-Google-Maps.jpg'} />
@@ -19,7 +22,7 @@ export const CardProfile = ({ name, description }) =>
       <Divider />
       <div>
         <Content extra floated="left">
-          <Icon name="thumbs up" /> 155 Recommended
+          <RecommendedCount count={favorite_count} />
         </Content>
         <Content extra floated="right">
           <Icon name="checked calendar" /> Joined 2016

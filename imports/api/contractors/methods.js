@@ -9,6 +9,7 @@ Meteor.methods({
       city: contractor.city,
       province: contractor.province,
       slug: contractor.slug,
+      favorite_count: 0,
     });
     return newContractor;
   },
@@ -33,3 +34,23 @@ Meteor.methods({
 //    });
 //  },
 //});
+
+Meteor.methods({
+  incrementRecommendedCount(id) {
+    Contractors.update(id, {
+      $inc: {
+        favorite_count: +1,
+      },
+    });
+  },
+});
+
+Meteor.methods({
+  decrementRecommendedCount(id) {
+    Contractors.update(id, {
+      $inc: {
+        favorite_count: -1,
+      },
+    });
+  },
+});

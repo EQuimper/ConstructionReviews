@@ -14,3 +14,14 @@ export const favoriteContractorsReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export const recommendedCounterReducer = (state = 0, action) => {
+  switch (action.type) {
+    case types.INCREMENT_RECOMMENDED_COUNT:
+      return state + 1;
+    case types.DECREMENT_RECOMMENDED_COUNT:
+      return state - 1;
+    default:
+      return state;
+  }
+};

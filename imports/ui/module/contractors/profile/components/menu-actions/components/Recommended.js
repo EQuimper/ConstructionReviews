@@ -7,15 +7,17 @@ import { Icon, MenuItem } from 'semantic-react';
 const Recommended = ({ contractor, favoriteContractors, actions }) => {
   handleLiked = contractor => {
     actions.addContractorFavorite(contractor);
+    actions.incrementRecommendedCount(contractor._id);
   };
   removeLiked = id => {
     actions.removeContractorFavorite(id);
+    actions.decrementRecommendedCount(id);
   };
   return (
     <div>
       {favoriteContractors.find(item => item === contractor._id) ?
         <MenuItem onClick={() => this.removeLiked(contractor._id)}>
-          <Icon name="heart red" size="large" /> Unrecommended
+          <Icon name="heart red" size="large" /> Recommended
         </MenuItem> :
         <MenuItem onClick={() => this.handleLiked(contractor)}>
           <Icon name="outline heart red" size="large" /> Recommended
@@ -27,6 +29,6 @@ const Recommended = ({ contractor, favoriteContractors, actions }) => {
 
 const mapState = state => ({ favoriteContractors: state.favoriteContractors });
 
-const mapDispatch = dispatch => ({ actions: bindActionCreators(favoriteActions, dispatch) });
+const mapDispatch = dispatch => ({ actions: bindActionCreators(favoriteActions, dispatch), });
 
 export default connect(mapState, mapDispatch)(Recommended);

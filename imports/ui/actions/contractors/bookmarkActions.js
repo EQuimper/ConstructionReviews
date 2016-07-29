@@ -20,7 +20,7 @@ export const removeContractorToBookmarks = id => {
   let contractorsBookmark = JSON.parse(localStorage.getItem('contractorsBookmark'));
   if (contractorsBookmark) {
     contractorsBookmark = contractorsBookmark.filter(item => item !== id);
-    localStorage.setItem('contractorsFavorite', JSON.stringify(contractorsBookmark));
+    localStorage.setItem('contractorsBookmark', JSON.stringify(contractorsBookmark));
   }
   Meteor.call('removeContractorToBookmark', id);
   return {

@@ -19,13 +19,13 @@ import {
   Row,
   Text,
 } from 'semantic-react';
-import { CardProfile } from './components/CardProfile';
+import { CardProfile } from './components/card-profile/CardProfile';
 import { MenuActions } from './components/menu-actions/MenuActions';
 import { LoadingPage } from '../../../layouts/LoadingPage';
 
 export const ContractorProfile = ({ contractor }) => {
   if (contractor[0] !== undefined) {
-    const { name, description } = contractor[0];
+    const { name, description, favorite_count } = contractor[0];
     return (
       <Container>
         <Grid divided>
@@ -42,7 +42,7 @@ export const ContractorProfile = ({ contractor }) => {
               <Divider />
               <Row columns={2}>
                 <Column width={9}>
-                  <CardProfile description={description} name={name} />
+                  <CardProfile description={description} name={name} favorite_count={favorite_count} />
                 </Column>
                 <Column width={5}>
                   <MenuActions contractor={contractor[0]} />

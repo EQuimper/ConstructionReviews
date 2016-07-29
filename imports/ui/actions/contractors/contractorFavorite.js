@@ -28,3 +28,19 @@ export const removeContractorFavorite = id => {
     payload: id,
   };
 };
+
+export const incrementRecommendedCount = (id) => {
+  Meteor.call('incrementRecommendedCount', id);
+  return {
+    type: types.INCREMENT_RECOMMENDED_COUNT,
+    payload: id,
+  };
+};
+
+export const decrementRecommendedCount = (id) => {
+  Meteor.call('decrementRecommendedCount', id);
+  return {
+    type: types.DECREMENT_RECOMMENDED_COUNT,
+    payload: id,
+  };
+};
