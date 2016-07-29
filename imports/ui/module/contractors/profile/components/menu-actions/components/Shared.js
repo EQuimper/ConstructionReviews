@@ -26,7 +26,10 @@ export default class Shared extends Component {
       },
       twColor: {
         color: '#4099FF',
-      }
+      },
+      goColor: {
+        color: '#dd4b39',
+      },
     };
     return (
       <div onMouseEnter={() => this.onButtonHoverEnter()} ref="menu">
@@ -46,6 +49,9 @@ export default class Shared extends Component {
             </Icons>
             <Icons>
               <Icon name="twitter square" size="big" style={styles.twColor} link />
+            </Icons>
+            <Icons>
+              <Icon name="google plus square" size="big" style={styles.goColor} link />
             </Icons>
             <Icons>
               <Icon name="mail" size="big" link />
