@@ -8,6 +8,7 @@ Meteor.methods({
       rating: review.rating,
       text: review.text,
       like: 0,
+      createdAt: new Date(),
     });
     return newReview;
   },

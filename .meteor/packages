@@ -19,3 +19,4 @@ ecmascript@0.5.7              # Enable ECMAScript2015+ syntax in app code
 
 msavin:mongol
 react-meteor-data
+momentjs:moment

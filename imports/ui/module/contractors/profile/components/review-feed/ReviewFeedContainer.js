@@ -8,6 +8,10 @@ export default createContainer(({ contractor }) => {
   return {
     reviews: Reviews.find({
       company_id: contractor._id,
+    }, {
+      sort: {
+        createdAt: -1,
+      },
     }).fetch(),
   };
 }, ReviewFeed);
