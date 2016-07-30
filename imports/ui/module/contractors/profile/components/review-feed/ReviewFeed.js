@@ -43,6 +43,10 @@ const ReviewFeed = ({ reviews, reviewsContractor, actions }) => {
           </div>
         </div>
       ))}
+      {/* <div className="heart_animation"> */}
+        {/* <input id="toggle-heart" type="checkbox" />
+        <label htmlFor="toggle-heart">❤</label> */}
+      {/* </div> */}
     </div>
   );
 };

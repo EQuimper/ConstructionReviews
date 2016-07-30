@@ -1,0 +1,253 @@
+.welcome-page-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
+
+.welcome-page-container-blue-side,
+.welcome-page-container-red-side,
+.welcome-page-container-gray-side {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  background-size: cover;
+  background-position: center center;
+  background-blend-mode: multiply;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.9s ease;
+}
+
+.welcome-page-container-blue-side:hover,
+.welcome-page-container-red-side:hover,
+.welcome-page-container-gray-side:hover {
+  background-color: #e8f1f2;
+}
+
+.welcome-page-container-blue-side {
+  background-color: #39a2ae;
+  background-image: url("https://images.unsplash.com/photo-1427751840561-9852520f8ce8?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=066c3296c39c50ff74dd939aea66ab04");
+}
+
+.welcome-page-container-red-side {
+  background-color: #dd403a;
+  background-image: url("https://images.unsplash.com/photo-1433170897235-615700336230?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=4cc33ad333b238cf760a0451d71a6a33");
+}
+
+.welcome-page-container-gray-side {
+  background-color: #424c55;
+  background-image: url("https://images.unsplash.com/photo-1458829267686-b15150d4a28e?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=67f5e12033abaef95ad93459420b7934");
+}
+
+.titleContainer {
+  width: 400px;
+  display: flex;
+  height: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  color: #e8f1f2;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.247059) 0px 14px 45px, rgba(0, 0, 0, 0.219608) 0px 10px 18px;
+  transition-duration: 0.7s;
+}
+
+.titleContainer:hover {
+  background-color: #e8f1f2;
+  color: #2a2d34;
+  box-shadow: rgba(0, 0, 0, 0.298039) 0px 19px 60px, rgba(0, 0, 0, 0.219608) 0px 15px 20px;
+  -webkit-transform: scale(1.1) rotate(4deg);
+  transform: scale(1.1) rotate(4deg);
+}
+
+/* Menu Actions */
+
+.menu-actions-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  height: 40%;
+  justify-content: space-around;
+}
+
+.menu-actions-list li {
+  cursor: pointer;
+}
+
+/* Rating */
+.rating-container {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  -ms-flex-direction: column;
+  -o-flex-direction: column;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;;
+}
+
+// Heart Animation
+
+// .heart_animation {
+//   width: 100px;
+//   height: 100px;
+//   position: absolute;
+//   left: 50%;
+//   top: 50%;
+//   transform: translate(-50%, -50%);
+//   background: url(https://cssanimation.rocks/images/posts/steps/heart.png) no-repeat;
+//   background-position: 0 0;
+//   cursor: pointer;
+//   animation: fave-heart 1s steps(28);
+// }
+// .heart_animation:hover {
+//   background-position: -2800px 0;
+//   transition: background 1s steps(28);
+// }
+// @keyframes fave-heart {
+//   0% {
+//     background-position: 0 0;
+//   }
+//   100% {
+//     background-position: -2800px 0;
+//   }
+// }
+
+// $bubble-d: 4.5rem; // bubble diameter
+// $bubble-r: .5*$bubble-d; // bubble-radius
+// $sparkle-d: .375rem;
+// $sparkle-r: .5*$sparkle-d;
+//
+// @mixin sparkles($k) {
+// 	$shadow-list: ();
+// 	$n-groups: 7;
+// 	$group-base-angle: 360deg/$n-groups;
+// 	$group-distr-r: (1 + $k*.25)*$bubble-r;
+// 	$n-sparkles: 2;
+// 	$sparkle-base-angle: 360deg/$n-sparkles;
+// 	$sparkle-off-angle: 60deg; // offset angle from radius
+// 	$spread-r: -$k*$sparkle-r;
+//
+// 	@for $i from 0 to $n-groups {
+// 		$group-curr-angle: $i*$group-base-angle -90deg;
+// 		$xg: $group-distr-r*cos($group-curr-angle);
+// 		$yg: $group-distr-r*sin($group-curr-angle);
+//
+// 		@for $j from 0 to $n-sparkles {
+// 			$sparkle-curr-angle: $group-curr-angle +
+// 				$sparkle-off-angle + $j*$sparkle-base-angle;
+// 			$xs: $xg + $sparkle-d*cos($sparkle-curr-angle);
+// 			$ys: $yg + $sparkle-d*sin($sparkle-curr-angle);
+//
+// 			$shadow-list: $shadow-list, $xs $ys 0 $spread-r
+// 				hsl(($i + $j)*$group-base-angle, 100%, 75%);
+// 		}
+// 	}
+//
+// 	box-shadow: $shadow-list;
+// }
+//
+// @mixin bubble($ext) {
+// 	transform: scale(1);
+// 	border-color: #cc8ef5;
+// 	border-width: $ext;
+// }
+//
+// body {
+// 	display: flex;
+// 	justify-content: center;
+// 	margin: 0;
+// 	height: 100vh;
+// 	background: linear-gradient(135deg,
+// 		#121721, #000);
+// 	font: 1em verdana, sans-serif;
+// }
+//
+// [id='toggle-heart'] {
+//   position: absolute;
+//   left: -100vw;
+//
+// 	&:checked + label {
+// 		color: #e2264d;
+// 		filter: none;
+// 		will-change: font-size;
+// 		animation: heart 1s cubic-bezier(.17, .89, .32, 1.49);
+//
+// 		&:before, &:after {
+// 			animation: inherit;
+// 			animation-timing-function: ease-out;
+// 		}
+//
+// 		&:before {
+// 			will-change: transform, border-width, border-color;
+// 			animation-name: bubble;
+// 		}
+//
+// 		&:after {
+// 			will-change: opacity, box-shadow;
+// 			animation-name: sparkles;
+// 		}
+// 	}
+//
+// 	&:focus + label {
+// 		text-shadow: 0 0 3px white,
+// 			0 1px 1px white, 0 -1px 1px white,
+// 			1px 0 1px white, -1px 0 1px white;
+// 	}
+// }
+//
+// [for='toggle-heart'] {
+// 	align-self: center;
+// 	position: relative;
+// 	color: #888;
+// 	font-size: 2em;
+// 	filter: grayscale(1);
+// 	user-select: none;
+// 	cursor: pointer;
+//
+// 	&:before, &:after {
+// 		position: absolute;
+// 		z-index: -1;
+// 		top: 50%; left: 50%;
+// 		border-radius: 50%;
+// 		content: '';
+// 	}
+//
+// 	&:before {
+// 		box-sizing: border-box;
+// 		margin: -$bubble-r;
+// 		border: solid $bubble-r #e2264d;
+// 		width: $bubble-d; height: $bubble-d;
+// 		transform: scale(0);
+// 	}
+//
+// 	&:after {
+// 		margin: -$sparkle-r;
+// 		width: $sparkle-d; height: $sparkle-d;
+// 		@include sparkles(1);
+// 	}
+// }
+//
+// @keyframes heart {
+// 	0%, 17.5% { font-size: 0; }
+// }
+//
+// @keyframes bubble {
+// 	15% { @include bubble($bubble-r); }
+// 	30%, 100% { @include bubble(0); }
+// }
+//
+// @keyframes sparkles {
+// 	0%, 20% { opacity: 0; }
+// 	25% {
+// 		opacity: 1;
+// 		@include sparkles(0);
+// 	}
+// }
