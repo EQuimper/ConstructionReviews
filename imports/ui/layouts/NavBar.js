@@ -10,14 +10,8 @@ export const NavBar = () =>
     <MenuItem onClick={() => browserHistory.push('/contractors')}>
       Contractors
     </MenuItem>
-    <MenuItem onClick={() => browserHistory.push('/reviews')}>
-      Reviews
-    </MenuItem>
     <MenuItem onClick={() => browserHistory.push('/contractors/new')}>
       New Contractor
-    </MenuItem>
-    <MenuItem onClick={() => browserHistory.push('/reviews/new')}>
-      New Review
     </MenuItem>
     <div className="right menu">
       <MenuItem>

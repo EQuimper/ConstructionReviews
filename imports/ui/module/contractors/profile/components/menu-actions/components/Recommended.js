@@ -5,22 +5,20 @@ import * as favoriteActions from '../../../../../../actions/contractors/contract
 import { Icon, MenuItem } from 'semantic-react';
 
 const Recommended = ({ contractor, favoriteContractors, actions }) => {
-  handleLiked = contractor => {
+  handleRecommended = contractor => {
     actions.addContractorFavorite(contractor);
-    actions.incrementRecommendedCount(contractor._id);
   };
-  removeLiked = id => {
+  removeRecommended = id => {
     actions.removeContractorFavorite(id);
-    actions.decrementRecommendedCount(id);
   };
   return (
     <div>
       {favoriteContractors.find(item => item === contractor._id) ?
-        <MenuItem onClick={() => this.removeLiked(contractor._id)}>
-          <Icon name="heart red" size="large" /> Recommended
+        <MenuItem onClick={() => this.removeRecommended(contractor._id)}>
+          <Icon inverted name="heart red" size="large" /> Recommended
         </MenuItem> :
-        <MenuItem onClick={() => this.handleLiked(contractor)}>
-          <Icon name="outline heart red" size="large" /> Recommended
+        <MenuItem onClick={() => this.handleRecommended(contractor)}>
+          <Icon inverted name="outline heart red" size="large" /> Recommended
         </MenuItem>
       }
     </div>

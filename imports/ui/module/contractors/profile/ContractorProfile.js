@@ -29,8 +29,13 @@ export const ContractorProfile = ({ contractor }) => {
                 <Column width={2}>
                   <Image src={'http://semantic-ui.com/images/wireframe/image.png'} size="tiny" />
                 </Column>
-                <Column width={14}>
+                <Column width={9}>
                   <h1>{name}</h1>
+                </Column>
+                <Column width={3}>
+                  <div>
+                    <Rating star size="large" initialValue={3} max={5} /> 155 Reviews
+                  </div>
                 </Column>
               </Row>
               <Divider />
@@ -38,19 +43,14 @@ export const ContractorProfile = ({ contractor }) => {
                 <Column width={9}>
                   <CardProfile {...contractor[0]} />
                 </Column>
-                <Column width={5}>
+                <Column width={7}>
                   <MenuActions contractor={contractor[0]} />
+                  <Review contractor={contractor[0]} />
                 </Column>
               </Row>
             </Grid>
           </Column>
           <Column width={8}>
-            <div>
-              <Rating star size="large" initialValue={3} max={5} /> 155 Reviews
-            </div>
-            <br />
-            <Review contractor={contractor[0]} />
-            <br />
             <ReviewFeedContainer contractor={contractor[0]} />
           </Column>
         </Grid>

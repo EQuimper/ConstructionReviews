@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Icon, Rating } from 'semantic-react';
+import { Input, Rating } from 'semantic-react';
+// import { MessageRating } from './MessageRating';
 
 export class InputRating extends Component {
   constructor() {
