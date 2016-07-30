@@ -1,26 +1,20 @@
 import React, { PropTypes } from 'react';
-import { browserHistory } from 'react-router';
 import {
-  Button,
-  Buttons,
-  Card,
   Column,
   Container,
-  Content,
   Divider,
-  Description,
+  Feed,
   Grid,
-  Header,
-  Icon,
   Image,
-  LabeledButton,
-  Meta,
   Rating,
   Row,
-  Text,
 } from 'semantic-react';
+
+import ReviewFeedContainer from './components/review-feed/ReviewFeedContainer';
+
 import { CardProfile } from './components/card-profile/CardProfile';
 import { MenuActions } from './components/menu-actions/MenuActions';
+import { Review } from './components/review/Review';
 import { LoadingPage } from '../../../layouts/LoadingPage';
 
 export const ContractorProfile = ({ contractor }) => {
@@ -55,13 +49,9 @@ export const ContractorProfile = ({ contractor }) => {
               <Rating star size="large" initialValue={3} max={5} /> 155 Reviews
             </div>
             <br />
-            <Button
-              onClick={() => browserHistory.push('/reviews/new')}
-              inverted
-              color="red"
-            >
-              <Icon name="write square" /> Write a Review
-            </Button>
+            <Review contractor={contractor[0]} />
+            <br />
+            <ReviewFeedContainer contractor={contractor[0]} />
           </Column>
         </Grid>
       </Container>

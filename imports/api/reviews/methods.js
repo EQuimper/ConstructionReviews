@@ -2,10 +2,11 @@ import { Meteor } from 'meteor/meteor';
 import { Reviews } from './reviews';
 
 Meteor.methods({
-  createReview(review) {
+  createReview(contractor, review) {
     const newReview = Reviews.insert({
-      company_name: review.company_name,
+      company_id: contractor._id,
       rating: review.rating,
+      text: review.text,
     });
     return newReview;
   },

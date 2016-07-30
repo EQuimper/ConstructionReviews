@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { Input, Text } from 'semantic-react';
 
-export class CompanyDescription extends Component {
+export class ReviewText extends Component {
   constructor() {
     super();
     this.state = {
-      description: '',
+      review_text: '',
     };
     this.onChange = this.onChange.bind(this);
   }
 
   onChange(e) {
-    this.setState({ description: e.target.value });
+    this.setState({ review_text: e.target.value });
   }
 
   getValue() {
-    return this.state.description;
+    return this.state.review_text;
   }
 
   render() {
@@ -23,7 +23,7 @@ export class CompanyDescription extends Component {
       <textarea
         {...this.props}
         onChange={this.onChange}
-        value={this.state.description}
+        value={this.state.review_text}
       />
     );
   }

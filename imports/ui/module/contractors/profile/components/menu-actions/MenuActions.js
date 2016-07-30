@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Icon, Menu, MenuItem } from 'semantic-react';
 
 // Components
@@ -15,3 +15,7 @@ export const MenuActions = ({ contractor }) =>
     <Bookmarked contractor={contractor} />
     <Recommended contractor={contractor} />
   </Menu>;
+
+MenuActions.propTypes = {
+  contractor: PropTypes.object.isRequired,
+};
