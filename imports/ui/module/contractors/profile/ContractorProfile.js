@@ -3,7 +3,6 @@ import {
   Column,
   Container,
   Divider,
-  Feed,
   Grid,
   Image,
   Rating,

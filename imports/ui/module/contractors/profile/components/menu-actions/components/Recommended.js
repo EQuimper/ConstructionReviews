@@ -30,7 +30,9 @@ const mapState = state => ({ favoriteContractors: state.favoriteContractors });
 const mapDispatch = dispatch => ({ actions: bindActionCreators(favoriteActions, dispatch) });
 
 Recommended.propTypes = {
-  contractor: PropTypes.object.isRequired,
+  contractor: PropTypes.object,
+  favoriteContractors: PropTypes.array,
+  actions: PropTypes.object,
 };
 
 export default connect(mapState, mapDispatch)(Recommended);

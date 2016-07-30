@@ -1,11 +1,9 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { browserHistory } from 'react-router';
 
 import {
   Container,
-  Content,
   Button,
-  Divider,
   Description,
   Meta,
   Items,
@@ -45,3 +43,7 @@ export const ListContractors = ({ contractors }) =>
       })}
     </Items>
   </Container>;
+
+ListContractors.propTypes = {
+  contractors: PropTypes.array,
+};

@@ -1,10 +1,11 @@
 import React, { PropTypes } from 'react';
+import { moment } from 'meteor/momentjs:moment';
 import { Card, Content, Image, Header, Meta, Description, Divider, Icon } from 'semantic-react';
 
 // Components
 import { RecommendedCount } from './components/RecommendedCount';
 
-export const CardProfile = ({ name, description, favorite_count, company_website }) =>
+export const CardProfile = ({ description, favorite_count, company_website, createdAt }) =>
   <Card>
     <Content>
       <div>
@@ -12,12 +13,14 @@ export const CardProfile = ({ name, description, favorite_count, company_website
           <RecommendedCount count={favorite_count} />
         </Content>
         <Content floated="right">
-          <Icon name="checked calendar" /> Joined 2016
+          <Icon name="checked calendar" />
+          Joined {moment(createdAt).format('MM/YYYY')}
         </Content>
       </div>
     </Content>
     <Image
-      src={'http://liveinportland.net/wp-content/uploads/2012/12/hollywood-district-in-portland-Google-Maps.jpg'} />
+      src={'http://liveinportland.net/wp-content/uploads/2012/12/hollywood-district-in-portland-Google-Maps.jpg'}
+    />
     <Content>
       <Header>Info</Header>
       <Divider />
@@ -41,6 +44,9 @@ export const CardProfile = ({ name, description, favorite_count, company_website
   </Card>;
 
 CardProfile.propTypes = {
-  name: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  company_website: PropTypes.string,
+  createdAt: PropTypes.any,
+  favorite_count: PropTypes.number,
   description: PropTypes.string,
 };

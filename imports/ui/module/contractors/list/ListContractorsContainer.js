@@ -6,6 +6,10 @@ import { ListContractors } from './ListContractors';
 export default createContainer(() => {
   Meteor.subscribe('getContractors');
   return {
-    contractors: Contractors.find({}).fetch(),
+    contractors: Contractors.find({}, {
+      sort: {
+        createdAt: -1,
+      },
+    }).fetch(),
   };
 }, ListContractors);
