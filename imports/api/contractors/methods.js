@@ -8,32 +8,13 @@ Meteor.methods({
       description: contractor.description,
       city: contractor.city,
       province: contractor.province,
+      company_website: contractor.company_website,
       slug: contractor.slug,
       favorite_count: 0,
     });
     return newContractor;
   },
 });
-
-//Meteor.methods({
-//  addContractorFavorites(id) {
-//    Contractors.update(id, {
-//      $set: {
-//        favorite: true,
-//      },
-//    });
-//  },
-//});
-//
-//Meteor.methods({
-//  removeContractorFavorites(id) {
-//    Contractors.update(id, {
-//      $set: {
-//        favorite: false,
-//      },
-//    });
-//  },
-//});
 
 Meteor.methods({
   incrementRecommendedCount(id) {

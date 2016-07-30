@@ -25,7 +25,7 @@ import { LoadingPage } from '../../../layouts/LoadingPage';
 
 export const ContractorProfile = ({ contractor }) => {
   if (contractor[0] !== undefined) {
-    const { name, description, favorite_count } = contractor[0];
+    const { name } = contractor[0];
     return (
       <Container>
         <Grid divided>
@@ -42,7 +42,7 @@ export const ContractorProfile = ({ contractor }) => {
               <Divider />
               <Row columns={2}>
                 <Column width={9}>
-                  <CardProfile description={description} name={name} favorite_count={favorite_count} />
+                  <CardProfile {...contractor[0]} />
                 </Column>
                 <Column width={5}>
                   <MenuActions contractor={contractor[0]} />

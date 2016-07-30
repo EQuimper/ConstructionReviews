@@ -20,13 +20,16 @@ export const ListContractors = ({ contractors }) =>
   <Container>
     <Items divided>
       {contractors.map((contractor, i) => {
-        const { name, city, province } = contractor;
+        const { name, city, province, favorite_count } = contractor;
         return (
           <Item key={i} image="http://semantic-ui.com/images/wireframe/image.png">
             <Header>{name}</Header>
             <Meta>{city} | {province[0]}</Meta>
             <Description><Image src="http://semantic-ui.com/images/wireframe/short-paragraph.png" /></Description>
-            <Text extra>Additional details</Text>
+            <Text extra>
+              <Icon name="thumbs up" />
+              {favorite_count === 0 ? 0 : favorite_count} Recommended
+            </Text>
             <Text extra>
               <Button
                 className="ui right floated"

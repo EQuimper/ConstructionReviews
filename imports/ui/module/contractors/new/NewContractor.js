@@ -8,6 +8,7 @@ import { CompanyName } from './formElements/CompanyName';
 import { CompanyDescription } from './formElements/CompanyDescription';
 import { City } from './formElements/City';
 import { Province } from './formElements/Province';
+import { CompanyWebsite } from './formElements/CompanyWebsite';
 
 export class NewContractor extends Component {
   handleSubmit() {
@@ -15,6 +16,7 @@ export class NewContractor extends Component {
     const description = this.description.getValue();
     const city = this.city.getValue();
     const province = this.province.getValue();
+    const company_website = this.company_website.getValue();
     const slug = `${name}-${city}`;
 
     Meteor.call('addContractor', {
@@ -22,6 +24,7 @@ export class NewContractor extends Component {
       description,
       city,
       province,
+      company_website,
       slug,
     });
 
@@ -49,6 +52,12 @@ export class NewContractor extends Component {
             <Field>
               <label>Province</label>
               <Province ref={ref => this.province = ref} />
+            </Field>
+          </Fields>
+          <Fields equalWidth>
+            <Field>
+              <label>Company Website</label>
+              <CompanyWebsite ref={ref => this.company_website = ref} />
             </Field>
           </Fields>
           <Button onClick={(e) => (e.preventDefault(), this.handleSubmit())}>Submit</Button>
