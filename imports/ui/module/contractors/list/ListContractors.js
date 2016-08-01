@@ -1,48 +1,52 @@
 import React, { PropTypes } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { browserHistory } from 'react-router';
 
-import {
-  Container,
-  Button,
-  Description,
-  Meta,
-  Items,
-  Item,
-  Header,
-  Text,
-  Image,
-  Icon,
-} from 'semantic-react';
-
 export const ListContractors = ({ contractors }) =>
-  <Container>
-    <Items divided>
+  <div className="ui container">
+    <ReactCSSTransitionGroup
+      component="div"
+      className="ui three column grid"
+      transitionName="reviewsLoad"
+      transitionEnterTimeout={600}
+      transitionLeaveTimeout={400}
+    >
       {contractors.map((contractor, i) => {
-        const { name, city, province, favorite_count } = contractor;
+        const { name, favorite_count, city, province } = contractor;
         return (
-          <Item key={i} image="http://semantic-ui.com/images/wireframe/image.png">
-            <Header>{name}</Header>
-            <Meta>{city} | {province[0]}</Meta>
-            <Description><Image src="http://semantic-ui.com/images/wireframe/short-paragraph.png" /></Description>
-            <Text extra>
-              <Icon name="thumbs up" />
-              {favorite_count === 0 ? 0 : favorite_count} Recommended
-            </Text>
-            <Text extra>
-              <Button
-                className="ui right floated"
-                inverted
+          <div className="column" key={i}>
+            <div className="cardProfile-wrapper">
+              <div
+                className="cardProfile"
                 onClick={() => browserHistory.push(`/contractors/profile/${name}`)}
-                color="red"
               >
-                More Info
-              </Button>
-            </Text>
-          </Item>
-        );
+                <div className="ui fluid card">
+                  <div className="content" style={{ textAlign: 'center' }}>
+                    <div className="right floated meta">
+                      {favorite_count} <i className="icon heart red inverted" />
+                    </div>
+                    <img className="ui medium image" src="http://brandongaille.com/wp-content/uploads/2013/07/Dlugos-Construction-Company-Logo.jpg" />
+                    <h3>{name}</h3>
+                  </div>
+                  <div className="extra content">
+                    <div className="ui teal label">Roofing</div>
+                    <div className="ui teal label">Sidding</div>
+                    <div className="ui teal label">Painting</div>
+                  </div>
+                  <div className="extra content">
+                    <i className="icon marker" />{city} | {province}
+                    <div className="right floated">
+                      10<i className="icon star black" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
       })}
-    </Items>
-  </Container>;
+    </ReactCSSTransitionGroup>
+  </div>
 
 ListContractors.propTypes = {
   contractors: PropTypes.array,

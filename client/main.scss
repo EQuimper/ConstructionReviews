@@ -39,6 +39,26 @@
   background-image: url("https://images.unsplash.com/photo-1458829267686-b15150d4a28e?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=67f5e12033abaef95ad93459420b7934");
 }
 
+.cardProfile-wrapper {
+  position: relative;
+  transition: 0.3s all cubic-bezier(0, 0.5, 0.5, 2);
+}
+
+.cardProfile {
+  cursor: pointer;
+  transition: 0.3s all cubic-bezier(0, 0.5, 0.5, 2);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  // &:hover {
+  //
+  // }
+}
+
+.cardProfile-wrapper, .cardProfile {
+  &:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+}
+
 .titleContainer {
   width: 400px;
   display: flex;
@@ -134,9 +154,9 @@
 // 	$sparkle-base-angle: 360deg/$n-sparkles;
 // 	$sparkle-off-angle: 60deg; // offset angle from radius
 // 	$spread-r: -$k*$sparkle-r;
-//
+// // * $group-base-angle - 90deg
 // 	@for $i from 0 to $n-groups {
-// 		$group-curr-angle: $i*$group-base-angle -90deg;
+// 		$group-curr-angle: $i;
 // 		$xg: $group-distr-r*cos($group-curr-angle);
 // 		$yg: $group-distr-r*sin($group-curr-angle);
 //
@@ -250,4 +270,131 @@
 // 		opacity: 1;
 // 		@include sparkles(0);
 // 	}
+// }
+
+/************* Animation *************/
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(-50px, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(-50px, 0, 0);
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 60px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+// reviewsLoad
+.reviewsLoad-enter {
+  opacity: 0;
+  animation: slideIn 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.reviewsLoad-leave {
+  animation: slideOut 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  opacity: 1.0;
+}
+
+// PageLoad
+
+.cardLoad-enter, .cardLoad-appear {
+  opacity: 0;
+  animation: slideIp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.cardLoad-leave {
+  animation: slideOut 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  opacity: 1.0;
+}
+
+.cardLoad-appear {
+  opacity: 0;
+  animation: slideUp 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+
+@-webkit-keyframes hvr-icon-sink-away {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(1em);
+    transform: translateY(1em);
+  }
+}
+
+@keyframes hvr-icon-sink-away {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(1em);
+    transform: translateY(1em);
+  }
+}
+
+// /* Icon Sink Away */
+// .hvr-icon-sink-away {
+//   display: inline-block;
+//   vertical-align: middle;
+//   -webkit-transform: translateZ(0);
+//   transform: translateZ(0);
+//   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+//   -webkit-backface-visibility: hidden;
+//   backface-visibility: hidden;
+//   -moz-osx-font-smoothing: grayscale;
+//   position: relative;
+//   padding-right: 2.2em;
+// }
+// .hvr-icon-sink-away:before, .hvr-icon-sink-away:after {
+//   content: "\f056";
+//   position: absolute;
+//   right: 1em;
+//   padding: 0 1px;
+//   font-family: FontAwesome;
+//   -webkit-transform: translateZ(0);
+//   transform: translateZ(0);
+// }
+// .hvr-icon-sink-away:after {
+//   opacity: 0;
+//   -webkit-animation-duration: 0.5s;
+//   animation-duration: 0.5s;
+//   -webkit-animation-fill-mode: forwards;
+//   animation-fill-mode: forwards;
+// }
+// .hvr-icon-sink-away:hover:after, .hvr-icon-sink-away:focus:after, .hvr-icon-sink-away:active:after {
+//   -webkit-animation-name: hvr-icon-sink-away;
+//   animation-name: hvr-icon-sink-away;
+//   -webkit-animation-timing-function: ease-out;
+//   animation-timing-function: ease-out;
 // }
