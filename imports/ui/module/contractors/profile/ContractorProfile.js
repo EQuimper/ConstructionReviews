@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import {
   Column,
   Container,
@@ -22,7 +23,15 @@ export const ContractorProfile = ({ contractor }) => {
     return (
       <Container>
         <Grid divided>
-          <Column width={8}>
+          <ReactCSSTransitionGroup
+            component="div"
+            className="eight wide column"
+            transitionName="cardLoad"
+            transitionEnterTimeout={600}
+            transitionAppearTimeout={600}
+            transitionLeaveTimeout={400}
+            transitionAppear
+          >
             <Grid>
               <Row columns={2}>
                 <Column width={2}>
@@ -48,7 +57,7 @@ export const ContractorProfile = ({ contractor }) => {
                 </Column>
               </Row>
             </Grid>
-          </Column>
+          </ReactCSSTransitionGroup>
           <Column width={8}>
             <ReviewFeedContainer contractor={contractor[0]} />
           </Column>
