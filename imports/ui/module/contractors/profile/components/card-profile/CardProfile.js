@@ -5,7 +5,9 @@ import { Card, Content, Image, Header, Meta, Description, Divider, Icon } from '
 // Components
 import { RecommendedCount } from './components/RecommendedCount';
 
-export const CardProfile = ({ description, favorite_count, company_website, createdAt }) =>
+export const CardProfile = ({
+  description, favorite_count, company_website, createdAt, phone_number,
+}) =>
   <Card>
     <Content>
       <div>
@@ -14,7 +16,7 @@ export const CardProfile = ({ description, favorite_count, company_website, crea
         </Content>
         <Content floated="right">
           <Icon name="checked calendar" />
-          Joined {moment(createdAt).format('MM/YYYY')}
+          Joined {moment(createdAt).format('MMM YYYY')}
         </Content>
       </div>
     </Content>
@@ -26,14 +28,22 @@ export const CardProfile = ({ description, favorite_count, company_website, crea
       <Divider />
       <Meta><Icon name="location arrow" />431 10 Avenue SE Calgary</Meta>
       <Meta><Icon name="marker" />T2G 0W3</Meta>
-      <Meta><Icon name="call square" />(403) 261-7950</Meta>
+      <Meta>
+        <Icon name="call square" />
+        {
+          phone_number === null || !phone_number ?
+            <span>No phone number</span> :
+          phone_number
+        }
+      </Meta>
       <Meta>
         <Icon name="external square" />
-        {company_website === null || !company_website ?
-          <span>No website sorry</span> :
-          <a href={`http://${company_website}`} target="_blank">
-            {company_website}
-          </a>
+        {
+          company_website === null || !company_website ?
+            <span>No website sorry</span> :
+            <a href={`http://${company_website}`} target="_blank">
+          {company_website}
+            </a>
         }
       </Meta>
       <Divider />
