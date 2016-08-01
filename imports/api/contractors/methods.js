@@ -11,15 +11,13 @@ Meteor.methods({
       city: contractor.city,
       province: contractor.province,
       company_website: contractor.company_website,
+      phone_number: contractor.phone_number,
       slug: contractor.slug,
       favorite_count: 0,
       createdAt: new Date(),
     });
     return newContractor;
   },
-});
-
-Meteor.methods({
   incrementRecommendedCount(id) {
     check(id, String);
     Contractors.update(id, {
@@ -28,9 +26,6 @@ Meteor.methods({
       },
     });
   },
-});
-
-Meteor.methods({
   decrementRecommendedCount(id) {
     check(id, String);
     Contractors.update(id, {
