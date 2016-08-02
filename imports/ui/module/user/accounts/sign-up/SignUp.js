@@ -2,37 +2,27 @@ import React, { Component } from 'react';
 
 // Form Elements
 import { Name } from './form-elements/Name';
+import { Password } from './form-elements/Password';
 
 export class SignUp extends Component {
+  handleSubmit() {
+    const name = this.name.getValue();
+    const { first_name, last_name, username } = name;
+    console.log(first_name, last_name, username);
+  }
   render() {
     return (
       <div className="sign-up-user-page">
+        <h2>Sign up as a user</h2>
         <div className="sign-up-user-wrapper">
           <div className="ui text container">
-            <h2>Sign Up</h2>
             <form className="ui form">
-              <Name />
-              <div className="field required">
-                <label>Password</label>
-                <div className="two fields required">
-                  <div className="field">
-                    <input
-                      type="password"
-                      name="password"
-                      placeholder="Password"
-                      pattern=".{8,}"
-                    />
-                  </div>
-                  <div className="field">
-                    <input
-                      type="password"
-                      name="confirm-password"
-                      placeholder="Confirm Password"
-                      pattern=".{8,}"
-                    />
-                  </div>
-                </div>
-              </div>
+              <Name ref={ref => this.name = ref} />
+              <Password />
+              <button
+                onClick={e => (e.preventDefault(), this.handleSubmit())}>
+                  Sign Up
+              </button>
             </form>
           </div>
         </div>
