@@ -1,15 +1,14 @@
 import { Meteor } from 'meteor/meteor';
-import { createContainer } from 'meteor/react-meteor-data';
+import { composeWithTracker } from 'react-komposer';
 import ReviewFeed from './ReviewFeed';
 import { Reviews } from '../../../../../../api/reviews/reviews';
+import { MediumLoading } from '../../../../../layouts/MediumLoading';
 
-export default createContainer(({ contractor }) => {
-  Meteor.subscribe('getContractorReviews', contractor);
-  return {
-    reviews: Reviews.find({}, {
-      sort: {
-        createdAt: -1,
-      },
-    }).fetch(),
-  };
-}, ReviewFeed);
+const composer = ({ contractor }, onData) => {
+  if (Meteor.subscribe('getContractorReviews', contractor).ready()) {
+    const reviews = Reviews.find({}, { sort: { createdAt: -1 } }).fetch();
+    onData(null, { reviews });
+  }
+};
+
+export default composeWithTracker(composer, MediumLoading)(ReviewFeed);
