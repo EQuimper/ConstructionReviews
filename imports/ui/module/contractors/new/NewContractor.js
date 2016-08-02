@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
-
 import { Button, Container, Field, Fields, Form } from 'semantic-react';
 
 import { CompanyName } from './formElements/CompanyName';

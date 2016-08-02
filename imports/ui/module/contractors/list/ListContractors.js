@@ -25,7 +25,9 @@ export const ListContractors = ({ contractors }) =>
                     <div className="right floated meta">
                       {favorite_count} <i className="icon heart red inverted" />
                     </div>
-                    <img className="ui medium image" src="http://brandongaille.com/wp-content/uploads/2013/07/Dlugos-Construction-Company-Logo.jpg" />
+                    <img
+                      className="ui small image" src="http://brandongaille.com/wp-content/uploads/2013/07/Dlugos-Construction-Company-Logo.jpg" alt=""
+                    />
                     <h3>{name}</h3>
                   </div>
                   <div className="extra content">
@@ -43,10 +45,10 @@ export const ListContractors = ({ contractors }) =>
               </div>
             </div>
           </div>
-        )
+        );
       })}
     </ReactCSSTransitionGroup>
-  </div>
+  </div>;
 
 ListContractors.propTypes = {
   contractors: PropTypes.array,
