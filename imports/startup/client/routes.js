@@ -8,6 +8,7 @@ import { WelcomePageNoUser } from '../../ui/pages/WelcomePageNoUser';
 import { NoMatch } from '../../ui/pages/NoMatch';
 import { NewContractor } from '../../ui/module/contractors/new/NewContractor';
 import { SignUp } from '../../ui/module/user/accounts/sign-up/SignUp';
+import { Login } from '../../ui/module/user/accounts/login/Login';
 
 // Containers
 import ListContractorsContainer from '../../ui/module/contractors/list/ListContractorsContainer';
@@ -18,6 +19,7 @@ export default (
   <Router history={history}>
     <Route path={"/welcome"} component={WelcomePageNoUser} />
     <Route path={"/user/sign-up"} component={SignUp} />
+    <Route path={"/user/login"} component={Login} />
     <Route path={"/"} component={App}>
       <IndexRoute component={WelcomePage} />
       <Route path={"/contractors"}>

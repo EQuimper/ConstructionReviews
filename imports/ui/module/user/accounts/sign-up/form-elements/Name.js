@@ -39,7 +39,6 @@ export class Name extends Component {
               <input
                 onChange={this.fistNameChange}
                 type="text"
-                name="first-name"
                 placeholder="First Name"
               />
               <i className="icon user" />
