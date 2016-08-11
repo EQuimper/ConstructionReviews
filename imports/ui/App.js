@@ -7,9 +7,9 @@ require('velocity-animate');
 require('velocity-animate/velocity.ui');
 
 export const App = ({ children }) => {
-  // if (!Meteor.userId()) {
-  //   browserHistory.push('/user/login');
-  // }
+  if (!Meteor.userId()) {
+    browserHistory.push('/user/login');
+  }
   return (
     <div>
       <NavBar />
