@@ -20,9 +20,13 @@ Meteor.methods({
 });
 
 Meteor.methods({
-  incrementReviewLike(id) {
+  incrementReviewLike(userId, id) {
+    check(userId, String);
     check(id, String);
     Reviews.update(id, {
+      $addToSet: {
+        users: userId,
+      },
       $inc: {
         like: +1,
       },
@@ -31,9 +35,13 @@ Meteor.methods({
 });
 
 Meteor.methods({
-  decrementReviewLike(id) {
+  decrementReviewLike(userId, id) {
+    check(userId, String);
     check(id, String);
     Reviews.update(id, {
+      $pull: {
+        users: userId,
+      },
       $inc: {
         like: -1,
       },
