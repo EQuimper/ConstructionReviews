@@ -37,7 +37,7 @@ export class Review extends Component {
   handleSubmit() {
     const rating = this.rating.getValue();
     const text = this.review_text.getValue();
-    Meteor.call('createReview', this.props.contractor, {
+    Meteor.call('createReview', Meteor.user(), this.props.contractor, {
       rating,
       text,
     });

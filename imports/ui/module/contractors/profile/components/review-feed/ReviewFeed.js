@@ -31,7 +31,7 @@ const ReviewFeed = ({ reviews, reviewsContractor, actions, contractor }) => {
           </div>
           <div className="content">
             <div className="summary">
-              Joe Henderson rate {review.rating} <Icon name="star" color="yellow" />
+              {review.user.username} rate {review.rating} <Icon name="star" color="yellow" />
               <div className="date">
                 {moment(review.createdAt).fromNow()}
               </div>
