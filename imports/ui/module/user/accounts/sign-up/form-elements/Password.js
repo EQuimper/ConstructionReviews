@@ -37,9 +37,7 @@ export class Password extends Component {
               <input
                 onChange={this.passwordChange}
                 type="password"
-                name="password"
                 placeholder="Password"
-                pattern=".{8,}"
               />
               <i className="icon lock" />
             </div>

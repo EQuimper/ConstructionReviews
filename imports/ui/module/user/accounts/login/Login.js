@@ -8,19 +8,18 @@ import { Email } from './form-elements/Email';
 
 export class Login extends Component {
   loginUser() {
-    event.preventDefault();
     const password = this.passwordLogin.getValue();
     const email = this.emailLogin.getValue();
 
     Meteor.loginWithPassword(email, password, err => {
-      if (err) Meteor.Error(500, 'User not exist');
+      if (err) console.log('Error:', err);
       browserHistory.push('/my-account');
     });
   }
   render() {
     return (
       <div className="sign-up-user-page">
-        <h2>Sign up as a user</h2>
+        <h2>Login as a User</h2>
         <div className="sign-up-user-wrapper">
           <div className="ui text container">
             <form className="ui form">
@@ -29,7 +28,7 @@ export class Login extends Component {
               <div className="ui buttons">
                 <button
                   className="ui white submit button"
-                  onClick={() => this.loginUser()}
+                  onClick={e => (e.preventDefault(), this.loginUser())}
                 >
                   Login
                 </button>
