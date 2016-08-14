@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Input, Text } from 'semantic-react';
 
 export class ReviewText extends Component {
   constructor() {
