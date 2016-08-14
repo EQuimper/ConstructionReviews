@@ -1,32 +1,26 @@
 import { Meteor } from 'meteor/meteor';
 import * as types from '../../constants';
 
-export const addContractorFavorite = contractor => {
-  let contractorsFavorite = JSON.parse(localStorage.getItem('contractorsFavorite'));
-
-  if (contractorsFavorite) contractorsFavorite = [...contractorsFavorite, contractor._id];
-  else contractorsFavorite = [contractor._id];
-
-  localStorage.setItem('contractorsFavorite', JSON.stringify(contractorsFavorite));
-
+export const addContractorFavorite = (userId, contractor) => {
   Meteor.call('addContractorFavorites', contractor);
-  Meteor.call('incrementRecommendedCount', contractor._id);
+  Meteor.call('incrementRecommendedCount', userId, contractor._id);
   return {
     type: types.ADD_CONTRACTOR_TO_FAVORITE,
-    payload: contractor,
+    payload: {
+      userId,
+      contractor,
+    },
   };
 };
 
-export const removeContractorFavorite = id => {
-  let contractorsFavorite = JSON.parse(localStorage.getItem('contractorsFavorite'));
-  if (contractorsFavorite) {
-    contractorsFavorite = contractorsFavorite.filter(item => item !== id);
-    localStorage.setItem('contractorsFavorite', JSON.stringify(contractorsFavorite));
-  }
+export const removeContractorFavorite = (userId, id) => {
   Meteor.call('removeContractorFavorites', id);
-  Meteor.call('decrementRecommendedCount', id);
+  Meteor.call('decrementRecommendedCount', userId, id);
   return {
     type: types.REMOVE_CONTRACTOR_TO_FAVORITE,
-    payload: id,
+    payload: {
+      userId,
+      id,
+    },
   };
 };

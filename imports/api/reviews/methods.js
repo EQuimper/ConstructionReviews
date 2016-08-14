@@ -13,6 +13,7 @@ Meteor.methods({
       rating: review.rating,
       text: review.text,
       like: 0,
+      usersLiked: [],
       createdAt: new Date(),
     });
     return newReview;
@@ -25,7 +26,7 @@ Meteor.methods({
     check(id, String);
     Reviews.update(id, {
       $addToSet: {
-        users: userId,
+        usersLiked: userId,
       },
       $inc: {
         like: +1,
@@ -40,7 +41,7 @@ Meteor.methods({
     check(id, String);
     Reviews.update(id, {
       $pull: {
-        users: userId,
+        usersLiked: userId,
       },
       $inc: {
         like: -1,

@@ -14,21 +14,30 @@ Meteor.methods({
       phone_number: contractor.phone_number,
       slug: contractor.slug,
       favorite_count: 0,
+      usersRecommended: [],
       createdAt: new Date(),
     });
     return newContractor;
   },
-  incrementRecommendedCount(id) {
+  incrementRecommendedCount(userId, id) {
+    check(userId, String);
     check(id, String);
     Contractors.update(id, {
+      $addToSet: {
+        usersRecommended: userId,
+      },
       $inc: {
         favorite_count: +1,
       },
     });
   },
-  decrementRecommendedCount(id) {
+  decrementRecommendedCount(userId, id) {
+    check(userId, String);
     check(id, String);
     Contractors.update(id, {
+      $pull: {
+        usersRecommended: userId,
+      },
       $inc: {
         favorite_count: -1,
       },

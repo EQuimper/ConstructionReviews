@@ -8,7 +8,7 @@ import { Icon } from 'semantic-react';
 import * as reviewActions from '../../../../../actions/contractors/reviewActions';
 import { Review } from '../review/Review';
 
-const ReviewFeed = ({ reviews, reviewsContractor, actions, contractor }) => {
+const ReviewFeed = ({ reviews, actions, contractor }) => {
   handleLiked = id => {
     const userId = Meteor.userId();
     actions.incrementReviewLiked(userId, id);
@@ -28,10 +28,7 @@ const ReviewFeed = ({ reviews, reviewsContractor, actions, contractor }) => {
   return (
     <div className="ui feed">
       {reviews.map((review, i) => {
-        let { users } = review;
-        if (!users) {
-          users = [];
-        }
+        const { usersLiked } = review;
         return (
           <div className="event" key={i}>
             <div className="label">
@@ -50,7 +47,7 @@ const ReviewFeed = ({ reviews, reviewsContractor, actions, contractor }) => {
                 {review.text}
               </div>
               <div className="meta">
-                {users.find(id => id === Meteor.userId()) ?
+                {usersLiked.find(id => id === Meteor.userId()) ?
                   <a className="like" onClick={() => this.removeLiked(review._id)}>
                     <i className="like icon red inverted" />
                     {review.like === 0 ? 0 : review.like} Likes
@@ -75,8 +72,6 @@ ReviewFeed.propTypes = {
   contractor: PropTypes.object,
 };
 
-const mapState = state => ({ reviewsContractor: state.reviewsContractor });
-
 const mapDispatch = dispatch => ({ actions: bindActionCreators(reviewActions, dispatch) });
 
-export default connect(mapState, mapDispatch)(ReviewFeed);
+export default connect(null, mapDispatch)(ReviewFeed);

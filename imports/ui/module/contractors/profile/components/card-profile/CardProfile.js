@@ -59,4 +59,5 @@ CardProfile.propTypes = {
   createdAt: PropTypes.any,
   favorite_count: PropTypes.number,
   description: PropTypes.string,
+  phone_number: PropTypes.string,
 };
