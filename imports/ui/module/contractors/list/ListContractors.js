@@ -12,7 +12,13 @@ export const ListContractors = ({ contractors }) =>
       transitionLeaveTimeout={400}
     >
       {contractors.map((contractor, i) => {
-        const { name, usersRecommended, city, province } = contractor;
+        const { name, usersRecommended, city, province, reviews } = contractor;
+        const avgRating = arr => {
+          const sum = arr.reduce((a, b) => a + b.rating, 0);
+          const total = arr.length;
+          const avg = sum / total;
+          return Math.round(avg); // For get a full integer
+        };
         return (
           <div className="column" key={i}>
             <div className="cardProfile-wrapper">
@@ -38,7 +44,10 @@ export const ListContractors = ({ contractors }) =>
                   <div className="extra content">
                     <i className="icon marker" />{city} | {province}
                     <div className="right floated">
-                      10<i className="icon star black" />
+                      {avgRating(reviews)} <i className="icon star yellow" />
+                    </div>
+                    <div className="right floated">
+                      {reviews.length} <i className="icon comments" />
                     </div>
                   </div>
                 </div>

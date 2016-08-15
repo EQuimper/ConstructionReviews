@@ -19,7 +19,13 @@ import { LoadingPage } from '../../../layouts/LoadingPage';
 
 export const ContractorProfile = ({ contractor }) => {
   if (contractor[0] !== undefined) {
-    const { name } = contractor[0];
+    const { name, reviews } = contractor[0];
+    const avgRating = arr => {
+      const sum = arr.reduce((a, b) => a + b.rating, 0);
+      const total = arr.length;
+      const avg = sum / total;
+      return Math.round(avg); // For get a full integer
+    };
     return (
       <Container>
         <Grid divided>
@@ -42,7 +48,11 @@ export const ContractorProfile = ({ contractor }) => {
                 </Column>
                 <Column width={3}>
                   <div>
-                    <Rating star size="large" initialValue={3} max={5} /> 155 Reviews
+                    <Rating
+                      star
+                      size="large"
+                      value={avgRating(reviews)}
+                    /> {reviews.length} Reviews
                   </div>
                 </Column>
               </Row>

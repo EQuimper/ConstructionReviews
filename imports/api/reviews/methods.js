@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { Reviews } from './reviews';
+import { Contractors } from '../contractors/contractors';
 
 Meteor.methods({
   createReview(user, contractor, review) {
@@ -15,6 +16,14 @@ Meteor.methods({
       like: 0,
       usersLiked: [],
       createdAt: new Date(),
+    });
+    Contractors.update(contractor._id, {
+      $addToSet: {
+        reviews: {
+          id: newReview,
+          rating: review.rating,
+        },
+      },
     });
     return newReview;
   },

@@ -13,7 +13,7 @@ import { Login } from '../../ui/module/user/accounts/login/Login';
 // Containers
 import ListContractorsContainer from '../../ui/module/contractors/list/ListContractorsContainer';
 import ContractorProfileContainer from '../../ui/module/contractors/profile/ContractorProfileContainer';
-import { UserProfile } from '../../ui/module/user/UserProfile';
+import { UserProfile } from '../../ui/module/user/accounts/profile/UserProfile';
 
 export default (
   <Router history={history}>

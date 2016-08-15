@@ -15,6 +15,7 @@ Meteor.methods({
       slug: contractor.slug,
       usersRecommended: [],
       usersBookmarked: [],
+      reviews: [],
       createdAt: new Date(),
     });
     return newContractor;
