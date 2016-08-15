@@ -40,18 +40,32 @@ Meteor.methods({
   addContractorToBookmark(userId, id) {
     check(userId, String);
     check(id, String);
+    // Add userId to the usersBookmarked in the contractors doc
     Contractors.update(id, {
       $addToSet: {
         usersBookmarked: userId,
+      },
+    });
+    // Add contractors from the bookmarked array of the user
+    Meteor.users.update(this.userId, {
+      $addToSet: {
+        contractorsBookmarked: id,
       },
     });
   },
   removeContractorToBookmark(userId, id) {
     check(userId, String);
     check(id, String);
+    // Remove userId to the usersBookmarked in the contractors doc
     Contractors.update(id, {
       $pull: {
         usersBookmarked: userId,
+      },
+    });
+    // Remove contractors from the bookmarked array of the user
+    Meteor.users.update(this.userId, {
+      $pull: {
+        contractorsBookmarked: id,
       },
     });
   },
