@@ -6,13 +6,13 @@ import { Card, Content, Image, Header, Meta, Description, Divider, Icon } from '
 import { RecommendedCount } from './components/RecommendedCount';
 
 export const CardProfile = ({
-  description, favorite_count, company_website, createdAt, phone_number,
+  description, company_website, createdAt, phone_number, usersRecommended
 }) =>
   <Card>
     <Content>
       <div>
         <Content floated="left">
-          <RecommendedCount count={favorite_count} />
+          <RecommendedCount count={usersRecommended} />
         </Content>
         <Content floated="right">
           <Icon name="checked calendar" />
@@ -57,7 +57,7 @@ CardProfile.propTypes = {
   name: PropTypes.string,
   company_website: PropTypes.string,
   createdAt: PropTypes.any,
-  favorite_count: PropTypes.number,
+  usersRecommended: PropTypes.array,
   description: PropTypes.string,
   phone_number: PropTypes.string,
 };

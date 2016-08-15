@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -27,6 +27,11 @@ const Bookmarked = ({ contractor, actions }) => {
       }
     </div>
   );
+};
+
+Bookmarked.propTypes = {
+  contractor: PropTypes.object,
+  actions: PropTypes.object,
 };
 
 const mapDispatch = dispatch => ({ actions: bindActionCreators(bookmarkActions, dispatch) });

@@ -13,34 +13,27 @@ Meteor.methods({
       company_website: contractor.company_website,
       phone_number: contractor.phone_number,
       slug: contractor.slug,
-      favorite_count: 0,
       usersRecommended: [],
       usersBookmarked: [],
       createdAt: new Date(),
     });
     return newContractor;
   },
-  incrementRecommendedCount(userId, id) {
+  addUserToRecommended(userId, id) {
     check(userId, String);
     check(id, String);
     Contractors.update(id, {
       $addToSet: {
         usersRecommended: userId,
       },
-      $inc: {
-        favorite_count: +1,
-      },
     });
   },
-  decrementRecommendedCount(userId, id) {
+  removeUserToRecommended(userId, id) {
     check(userId, String);
     check(id, String);
     Contractors.update(id, {
       $pull: {
         usersRecommended: userId,
-      },
-      $inc: {
-        favorite_count: -1,
       },
     });
   },

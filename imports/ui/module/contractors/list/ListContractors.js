@@ -12,7 +12,7 @@ export const ListContractors = ({ contractors }) =>
       transitionLeaveTimeout={400}
     >
       {contractors.map((contractor, i) => {
-        const { name, favorite_count, city, province } = contractor;
+        const { name, usersRecommended, city, province } = contractor;
         return (
           <div className="column" key={i}>
             <div className="cardProfile-wrapper">
@@ -23,7 +23,7 @@ export const ListContractors = ({ contractors }) =>
                 <div className="ui fluid card">
                   <div className="content" style={{ textAlign: 'center' }}>
                     <div className="right floated meta">
-                      {favorite_count} <i className="icon heart red inverted" />
+                      {usersRecommended.length} <i className="icon heart red inverted" />
                     </div>
                     <img
                       className="ui small image" src="http://brandongaille.com/wp-content/uploads/2013/07/Dlugos-Construction-Company-Logo.jpg" alt=""

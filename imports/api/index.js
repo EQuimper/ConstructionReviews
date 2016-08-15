@@ -1,4 +1,3 @@
 import './contractors';
 import './reviews';
-import './favorites';
-import './bookmark';
+// import './favorites';
