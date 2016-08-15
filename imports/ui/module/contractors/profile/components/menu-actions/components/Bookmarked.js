@@ -7,12 +7,10 @@ import { Icon, MenuItem } from 'semantic-react';
 
 const Bookmarked = ({ contractor, actions }) => {
   handleBookmark = id => {
-    const userId = Meteor.userId();
-    actions.addContractorToBookmarks(userId, id);
+    actions.addContractorToBookmarks(id);
   };
   removeBookmark = id => {
-    const userId = Meteor.userId();
-    actions.removeContractorToBookmarks(userId, id);
+    actions.removeContractorToBookmarks(id);
   };
   const { usersBookmarked } = contractor;
   return (

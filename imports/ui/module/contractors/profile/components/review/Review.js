@@ -5,10 +5,9 @@ import {
   Content,
   Form,
   Field,
-  Fields,
   Icon,
   Header,
-  Modal
+  Modal,
 }
   from 'semantic-react';
 import { InputRating } from './form-elements/InputRating';
@@ -37,7 +36,7 @@ export class Review extends Component {
   handleSubmit() {
     const rating = this.rating.getValue();
     const text = this.review_text.getValue();
-    Meteor.call('createReview', Meteor.user(), this.props.contractor, {
+    Meteor.call('createReview', this.props.contractor, {
       rating,
       text,
     });
