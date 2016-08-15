@@ -15,6 +15,7 @@ Meteor.methods({
       slug: contractor.slug,
       favorite_count: 0,
       usersRecommended: [],
+      usersBookmarked: [],
       createdAt: new Date(),
     });
     return newContractor;
@@ -40,6 +41,24 @@ Meteor.methods({
       },
       $inc: {
         favorite_count: -1,
+      },
+    });
+  },
+  addContractorToBookmark(userId, id) {
+    check(userId, String);
+    check(id, String);
+    Contractors.update(id, {
+      $addToSet: {
+        usersBookmarked: userId,
+      },
+    });
+  },
+  removeContractorToBookmark(userId, id) {
+    check(userId, String);
+    check(id, String);
+    Contractors.update(id, {
+      $pull: {
+        usersBookmarked: userId,
       },
     });
   },

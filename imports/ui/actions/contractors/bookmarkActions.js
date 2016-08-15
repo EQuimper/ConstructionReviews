@@ -1,30 +1,24 @@
 import { Meteor } from 'meteor/meteor';
 import * as types from '../../constants';
 
-export const addContractorToBookmarks = contractor => {
-  let contractorsBookmark = JSON.parse(localStorage.getItem('contractorsBookmark'));
-
-  if (contractorsBookmark) contractorsBookmark = [...contractorsBookmark, contractor._id];
-  else contractorsBookmark = [contractor._id];
-
-  localStorage.setItem('contractorsBookmark', JSON.stringify(contractorsBookmark));
-
-  Meteor.call('addContractorToBookmark', contractor);
+export const addContractorToBookmarks = (userId, id) => {
+  Meteor.call('addContractorToBookmark', userId, id);
   return {
     type: types.ADD_CONTRACTOR_TO_BOOKMARK,
-    payload: contractor,
+    payload: {
+      userId,
+      id,
+    },
   };
 };
 
-export const removeContractorToBookmarks = id => {
-  let contractorsBookmark = JSON.parse(localStorage.getItem('contractorsBookmark'));
-  if (contractorsBookmark) {
-    contractorsBookmark = contractorsBookmark.filter(item => item !== id);
-    localStorage.setItem('contractorsBookmark', JSON.stringify(contractorsBookmark));
-  }
-  Meteor.call('removeContractorToBookmark', id);
+export const removeContractorToBookmarks = (userId, id) => {
+  Meteor.call('removeContractorToBookmark', userId, id);
   return {
     type: types.REMOVE_CONTRACTOR_TO_BOOKMARK,
-    payload: id,
+    payload: {
+      userId,
+      id,
+    },
   };
 };

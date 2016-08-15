@@ -24,7 +24,6 @@ export class Dropdown extends Component {
       browserHistory.push('/my-account');
     } else if (value === 2) {
       Meteor.logout(() => {
-        console.log('User logout');
         browserHistory.push('/welcome');
       });
     }
