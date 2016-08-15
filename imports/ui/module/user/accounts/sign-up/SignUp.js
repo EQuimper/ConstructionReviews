@@ -17,8 +17,10 @@ export class SignUp extends Component {
     const { first_name, last_name, username } = name;
 
     Accounts.createUser({
-      first_name,
-      last_name,
+      profile: {
+        first_name,
+        last_name,
+      },
       username,
       email,
       password,

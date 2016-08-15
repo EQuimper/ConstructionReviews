@@ -50,7 +50,7 @@ Meteor.methods({
     // Add contractors from the bookmarked array of the user
     Meteor.users.update(this.userId, {
       $addToSet: {
-        contractorsBookmarked: id,
+        'profile.contractorsBookmarked': id,
       },
     });
   },
@@ -66,7 +66,7 @@ Meteor.methods({
     // Remove contractors from the bookmarked array of the user
     Meteor.users.update(this.userId, {
       $pull: {
-        contractorsBookmarked: id,
+        'profile.contractorsBookmarked': id,
       },
     });
   },

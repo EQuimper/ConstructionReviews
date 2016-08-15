@@ -1,8 +1,10 @@
 import { Accounts } from 'meteor/accounts-base';
 
 Accounts.onCreateUser((options, user) => {
-  user.firstName = options.first_name;
-  user.lastName = options.last_name;
-  user.contractorsBookmarked = [];
+  user.profile = {
+    firstName: options.profile.first_name,
+    lastName: options.profile.last_name,
+    contractorsBookmarked: [],
+  };
   return user;
 });
