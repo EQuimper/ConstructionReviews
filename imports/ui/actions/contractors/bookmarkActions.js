@@ -1,14 +1,11 @@
 import { Meteor } from 'meteor/meteor';
 import * as types from '../../constants';
 
-export const addContractorToBookmarks = (userId, id) => {
-  Meteor.call('addContractorToBookmark', userId, id);
+export const addContractorToBookmarks = id => {
+  Meteor.call('addContractorToBookmark', id);
   return {
     type: types.ADD_CONTRACTOR_TO_BOOKMARK,
-    payload: {
-      userId,
-      id,
-    },
+    payload: id,
   };
 };
 

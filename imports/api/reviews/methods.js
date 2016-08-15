@@ -4,12 +4,15 @@ import { Reviews } from './reviews';
 import { Contractors } from '../contractors/contractors';
 
 Meteor.methods({
-  createReview(user, contractor, review) {
-    check(user, Object);
+  createReview(contractor, review) {
     check(contractor, Object);
     check(review, Object);
+    const user = Meteor.users.findOne(this.userId);
     const newReview = Reviews.insert({
-      user,
+      user: {
+        userId: user._id,
+        username: user.username,
+      },
       company_id: contractor._id,
       rating: review.rating,
       text: review.text,
@@ -26,6 +29,14 @@ Meteor.methods({
       },
     });
     return newReview;
+  },
+  deleteReview(review) {
+    check(review, Object);
+    const user = Meteor.users.findOne(this.userId);
+    if (review.user.userId !== user._id) {
+      throw Meteor.Error(503, 'not-authorized');
+    }
+    Reviews.remove(review._id);
   },
 });
 

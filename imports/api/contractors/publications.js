@@ -8,3 +8,9 @@ Meteor.publish('getContractor', params => {
   check(params, Object);
   return Contractors.find({ name: params.name });
 });
+
+Meteor.publish('getContractorById', () => {
+  const user = Meteor.users.findOne(this.userId);
+  const contIds = user.profile.contractorsBookmarked.map(id => id);
+  return Contractors.find({_id: {$in: contIds}});
+});
