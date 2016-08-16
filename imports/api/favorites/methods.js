@@ -6,7 +6,6 @@ import { check } from 'meteor/check';
 Meteor.methods({
   addContractorToBookmark(id) {
     check(id, String);
-    // const contractor = Contractors.findOne({ _id: id });
     const user = Meteor.users.findOne(this.userId);
     const newFavorite = Favorites.insert({
       userId: user._id,
@@ -28,9 +27,7 @@ Meteor.methods({
   },
   removeContractorToBookmark(id) {
     check(id, String);
-    // const contractor = Contractors.findOne({ _id: id });
     const user = Meteor.users.findOne(this.userId);
-
     const deleteFavorite = Favorites.remove({
       userId: user._id,
       contractorId: id,
