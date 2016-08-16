@@ -13,7 +13,7 @@ import { Login } from '../../ui/module/user/accounts/login/Login';
 // Containers
 import ListContractorsContainer from '../../ui/module/contractors/list/ListContractorsContainer';
 import ContractorProfileContainer from '../../ui/module/contractors/profile/ContractorProfileContainer';
-import { UserProfile } from '../../ui/module/user/accounts/profile/UserProfile';
+import UserProfileContainer from '../../ui/module/user/accounts/profile/UserProfileContainer';
 
 export default (
   <Router history={history}>
@@ -28,7 +28,7 @@ export default (
         <Route path={"/contractors/new"} component={NewContractor} />
       </Route>
       <Route name="userAccount" path={"/my-account"}>
-        <IndexRoute component={UserProfile} />
+        <IndexRoute component={UserProfileContainer} />
       </Route>
       <Route path={"*"} component={NoMatch} />
     </Route>

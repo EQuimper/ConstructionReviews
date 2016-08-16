@@ -9,13 +9,10 @@ export const addContractorToBookmarks = id => {
   };
 };
 
-export const removeContractorToBookmarks = (userId, id) => {
-  Meteor.call('removeContractorToBookmark', userId, id);
+export const removeContractorToBookmarks = id => {
+  Meteor.call('removeContractorToBookmark', id);
   return {
     type: types.REMOVE_CONTRACTOR_TO_BOOKMARK,
-    payload: {
-      userId,
-      id,
-    },
+    payload: id,
   };
 };

@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { moment } from 'meteor/momentjs:moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Icon, Rating } from 'semantic-react';
+import { Rating } from 'semantic-react';
 
 import * as reviewActions from '../../../../../actions/contractors/reviewActions';
 import { Review } from '../review/Review';
@@ -26,7 +26,7 @@ const ReviewFeed = ({ reviews, actions, contractor }) => {
     );
   }
   handleRemove = review => {
-    Meteor.call('deleteReview', review);
+    Meteor.call('deleteReview', contractor, review);
   };
   const showReview = num => {
     let total = '';
@@ -52,7 +52,12 @@ const ReviewFeed = ({ reviews, actions, contractor }) => {
               <div className="summary">
                 <em>
                   {review.user.username}
-                </em> <Rating type="star" value={review.rating} className="yellow" max={review.rating}/>
+                </em>&nbsp;
+                <Rating
+                  type="star"
+                  value={review.rating}
+                  max={review.rating}
+                />
                 <div className="date">
                   {moment(review.createdAt).fromNow()}
                 </div>
@@ -63,25 +68,25 @@ const ReviewFeed = ({ reviews, actions, contractor }) => {
               <div className="meta icon-happy">
                 {usersLiked.find(id => id === Meteor.userId()) ?
                   <a className="like" onClick={() => this.removeLiked(review._id)}>
-                    <i className="thumbs up icon large red inverted"/>
+                    <i className="thumbs up icon large red inverted" />
                     {showReview(review.like)}
                   </a> :
                   <a className="like" onClick={() => this.handleLiked(review._id)}>
-                    <i className="thumbs outline up large icon"/>
+                    <i className="thumbs outline up large icon" />
                     {showReview(review.like)}
                   </a>
                 }
               </div>
               <div className="meta icon-happy">
                 <a href="">
-                  <i className="icon thumbs outline down large"/>
+                  <i className="icon thumbs outline down large" />
                   333 Dislikes
                 </a>
               </div>
               <div className="meta icon-happy">
                 {Meteor.userId() === review.user.userId ?
                   <a onClick={() => this.handleRemove(review)}>
-                    <i className="close link icon large"/>Delete
+                    <i className="close link icon large" />Delete
                   </a> :
                   null
                 }

@@ -30,12 +30,20 @@ Meteor.methods({
     });
     return newReview;
   },
-  deleteReview(review) {
+  deleteReview(contractor, review) {
+    check(contractor, Object);
     check(review, Object);
     const user = Meteor.users.findOne(this.userId);
     if (review.user.userId !== user._id) {
       throw Meteor.Error(503, 'not-authorized');
     }
+    Contractors.update(contractor._id, {
+      $pull: {
+        reviews: {
+          id: review._id,
+        },
+      },
+    });
     Reviews.remove(review._id);
   },
 });
