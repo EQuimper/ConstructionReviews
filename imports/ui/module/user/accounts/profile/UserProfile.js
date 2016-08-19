@@ -1,23 +1,50 @@
-import React, { PropTypes } from 'react';
-import { Container } from 'semantic-react';
+import React, { Component, PropTypes } from 'react';
 
 import { LoadingPage } from '../../../../layouts/LoadingPage';
+import { SideMenu } from './SideMenu';
 
-export const UserProfile = ({ contractors, user }) => {
-  if (!user) return <LoadingPage />;
-  const { username } = user;
-  return (
-    <Container>
-      <h1>Hello {username}</h1>
-      <ul>
-        {contractors.map((contractor, i) => (
-          <li key={i}>{contractor.name}</li>
-        ))}
-      </ul>
-    </Container>
-  );
-};
+export class UserProfile extends Component {
+  constructor() {
+    super();
+    this.state = {
+      tabActive: null,
+    };
+  }
+
+  handleTabActive(tab) {
+    this.setState({
+      tabActive: tab
+    });
+  }
+
+  render() {
+    const { user, contractors } = this.props;
+    if (!user) return <LoadingPage />;
+    return (
+      <div>
+        <SideMenu
+          bookmark={contractors.length}
+          tabActive={this.state.tabActive}
+          handleTabActive={(tab) => this.handleTabActive(tab)}
+        />
+        <div className="ui centered grid">
+          <h1>Welcome {user.username}</h1>
+          <br />
+          {this.state.tabActive === 1 ? (
+            <div>
+              {contractors.map(contractor => (
+                <li>{contractor.name}</li>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      </div>
+    );
+  }
+}
+
 
 UserProfile.propTypes = {
   user: PropTypes.object,
+  contractors: PropTypes.array
 };

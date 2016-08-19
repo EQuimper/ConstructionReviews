@@ -20,6 +20,7 @@ export class ReviewText extends Component {
   render() {
     return (
       <textarea
+        className="focus"
         {...this.props}
         onChange={this.onChange}
         value={this.state.review_text}

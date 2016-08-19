@@ -1,12 +1,25 @@
 import React, { PropTypes } from 'react';
 import { moment } from 'meteor/momentjs:moment';
-import { Card, Content, Image, Header, Meta, Description, Divider, Icon } from 'semantic-react';
+import {
+  Card,
+  Content,
+  Header,
+  Meta,
+  Description,
+  Divider,
+  Icon
+} from 'semantic-react';
 
 // Components
 import { RecommendedCount } from './components/RecommendedCount';
+import { AddressMap } from './components/AddressMap';
 
 export const CardProfile = ({
-  description, company_website, createdAt, phone_number, usersRecommended
+  description,
+  company_website,
+  createdAt,
+  phone_number,
+  usersRecommended
 }) =>
   <Card>
     <Content>
@@ -20,9 +33,7 @@ export const CardProfile = ({
         </Content>
       </div>
     </Content>
-    <Image
-      src={'http://liveinportland.net/wp-content/uploads/2012/12/hollywood-district-in-portland-Google-Maps.jpg'}
-    />
+    <AddressMap />
     <Content>
       <Header>Info</Header>
       <Divider />

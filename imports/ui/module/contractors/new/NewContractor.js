@@ -9,6 +9,7 @@ import { City } from './formElements/City';
 import { Province } from './formElements/Province';
 import { CompanyWebsite } from './formElements/CompanyWebsite';
 import { PhoneNumber } from './formElements/PhoneNumber';
+import { Location } from './formElements/Location';
 
 export class NewContractor extends Component {
   handleSubmit() {
@@ -63,6 +64,10 @@ export class NewContractor extends Component {
             <Field>
               <label>Phone Number</label>
               <PhoneNumber ref={ref => this.phone_number = ref} />
+            </Field>
+            <Field>
+              <label>Location</label>
+              <Location />
             </Field>
           </Fields>
           <Button onClick={(e) => (e.preventDefault(), this.handleSubmit())}>Submit</Button>

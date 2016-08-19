@@ -1,34 +1,29 @@
 import React, { PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { moment } from 'meteor/momentjs:moment';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Rating } from 'semantic-react';
 
-import * as reviewActions from '../../../../../actions/contractors/reviewActions';
 import { Review } from '../review/Review';
 
-const ReviewFeed = ({ reviews, actions, contractor }) => {
+const ReviewFeed = ({ reviews, contractor }) => {
   handleLiked = id => {
-    const userId = Meteor.userId();
-    actions.incrementReviewLiked(userId, id);
+    Meteor.call('incrementReviewLike', id);
+    Meteor.call('removeReviewDisLike', id);
   };
   removeLiked = id => {
-    const userId = Meteor.userId();
-    actions.decrementReviewLiked(userId, id);
+    Meteor.call('decrementReviewLike', id);
   };
-  if (reviews.length === 0) {
-    return (
-      <div>
-        <h1>No Review Yet!</h1>
-        <Review contractor={contractor} />
-      </div>
-    );
-  }
+  addDisLike = id => {
+    Meteor.call('addReviewDisLike', id);
+    Meteor.call('decrementReviewLike', id);
+  };
+  removeDisLike = id => {
+    Meteor.call('removeReviewDisLike', id);
+  };
   handleRemove = review => {
     Meteor.call('deleteReview', contractor, review);
   };
-  const showReview = num => {
+  const showLiked = num => {
     let total = '';
     if (num === 0) {
       total = '0 Like';
@@ -39,10 +34,29 @@ const ReviewFeed = ({ reviews, actions, contractor }) => {
     }
     return total;
   };
+  const showDisLiked = num => {
+    let total = '';
+    if (num === 0) {
+      total = '0 Dislike';
+    } else if (num === 1) {
+      total = '1 Dislike';
+    } else {
+      total = `${num} Dislikes`;
+    }
+    return total;
+  };
+  if (reviews.length === 0) {
+    return (
+      <div>
+        <h1>No Review Yet!</h1>
+        <Review contractor={contractor} />
+      </div>
+    );
+  }
   return (
     <div className="ui large feed">
       {reviews.map((review, i) => {
-        const { usersLiked } = review;
+        const { usersLiked, usersDisLiked } = review;
         return (
           <div className="event" key={i}>
             <div className="label">
@@ -65,32 +79,50 @@ const ReviewFeed = ({ reviews, actions, contractor }) => {
               <div className="extra text">
                 {review.text}
               </div>
-              <div className="meta icon-happy">
-                {usersLiked.find(id => id === Meteor.userId()) ?
-                  <a className="like" onClick={() => this.removeLiked(review._id)}>
-                    <i className="thumbs up icon large red inverted" />
-                    {showReview(review.like)}
-                  </a> :
-                  <a className="like" onClick={() => this.handleLiked(review._id)}>
-                    <i className="thumbs outline up large icon" />
-                    {showReview(review.like)}
-                  </a>
-                }
-              </div>
-              <div className="meta icon-happy">
-                <a href="">
-                  <i className="icon thumbs outline down large" />
-                  333 Dislikes
-                </a>
-              </div>
-              <div className="meta icon-happy">
-                {Meteor.userId() === review.user.userId ?
-                  <a onClick={() => this.handleRemove(review)}>
-                    <i className="close link icon large" />Delete
-                  </a> :
-                  null
-                }
-              </div>
+              {Meteor.userId() === review.user.userId ? (
+                <div>
+                  <div className="meta icon-happy">
+                    <i className="thumbs up icon large inverted ui disabled" />
+                    {showLiked(usersLiked.length)}
+                  </div>
+                  <div className="meta icon-happy">
+                    <i className="thumbs down icon large inverted ui disabled" />
+                    {showLiked(usersDisLiked.length)}
+                  </div>
+                  <div className="meta icon-happy">
+                    <a onClick={() => this.handleRemove(review)}>
+                      <i className="close link icon large orange inverted" />Delete
+                    </a>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <div className="meta icon-happy">
+                    {usersLiked.find(id => id === Meteor.userId()) ?
+                      <a onClick={() => this.removeLiked(review._id)}>
+                        <i className="thumbs up icon large blue inverted" />
+                        {showLiked(usersLiked.length)}
+                      </a> :
+                      <a onClick={() => this.handleLiked(review._id)}>
+                        <i className="thumbs outline up large icon" />
+                        {showLiked(usersLiked.length)}
+                      </a>
+                    }
+                  </div>
+                  <div className="meta icon-happy">
+                    {usersDisLiked.find(id => id === Meteor.userId()) ?
+                      <a onClick={() => this.removeDisLike(review._id)}>
+                        <i className="icon thumbs down large red inverted" />
+                        {showDisLiked(usersDisLiked.length)}
+                      </a> :
+                      <a onClick={() => this.addDisLike(review._id)}>
+                        <i className="icon thumbs outline down large" />
+                        {showDisLiked(usersDisLiked.length)}
+                      </a>
+                    }
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         );
@@ -106,6 +138,4 @@ ReviewFeed.propTypes = {
   contractor: PropTypes.object,
 };
 
-const mapDispatch = dispatch => ({ actions: bindActionCreators(reviewActions, dispatch) });
-
-export default connect(null, mapDispatch)(ReviewFeed);
+export default ReviewFeed;

@@ -7,6 +7,6 @@ export default createContainer(() => {
   Meteor.subscribe('getContractorsBookmarkedFromUser');
   return {
     contractors: Contractors.find().fetch(),
-    user: Meteor.user(),
+    user: Meteor.user()
   };
 }, UserProfile);

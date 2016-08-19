@@ -16,8 +16,8 @@ Meteor.methods({
       company_id: contractor._id,
       rating: review.rating,
       text: review.text,
-      like: 0,
       usersLiked: [],
+      usersDisLiked: [],
       createdAt: new Date(),
     });
     Contractors.update(contractor._id, {
@@ -46,33 +46,35 @@ Meteor.methods({
     });
     Reviews.remove(review._id);
   },
-});
-
-Meteor.methods({
-  incrementReviewLike(userId, id) {
-    check(userId, String);
+  incrementReviewLike(id) {
     check(id, String);
     Reviews.update(id, {
       $addToSet: {
-        usersLiked: userId,
-      },
-      $inc: {
-        like: +1,
+        usersLiked: this.userId,
       },
     });
   },
-});
-
-Meteor.methods({
-  decrementReviewLike(userId, id) {
-    check(userId, String);
+  decrementReviewLike(id) {
     check(id, String);
     Reviews.update(id, {
       $pull: {
-        usersLiked: userId,
+        usersLiked: this.userId,
       },
-      $inc: {
-        like: -1,
+    });
+  },
+  addReviewDisLike(id) {
+    check(id, String);
+    Reviews.update(id, {
+      $addToSet: {
+        usersDisLiked: this.userId,
+      },
+    });
+  },
+  removeReviewDisLike(id) {
+    check(id, String);
+    Reviews.update(id, {
+      $pull: {
+        usersDisLiked: this.userId,
       },
     });
   },

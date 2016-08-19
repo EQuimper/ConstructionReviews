@@ -27,6 +27,9 @@ export class Dropdown extends Component {
         browserHistory.push('/welcome');
       });
     }
+    this.setState({
+      menuValue: null
+    });
   }
 
   onDropdownClick() {

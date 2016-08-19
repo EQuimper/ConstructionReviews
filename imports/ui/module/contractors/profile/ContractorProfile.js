@@ -49,7 +49,7 @@ export const ContractorProfile = ({ contractor }) => {
                 <Column width={3}>
                   <div>
                     <Rating
-                      star
+                      type="star"
                       size="large"
                       value={avgRating(reviews)}
                     /> {reviews.length} Reviews
