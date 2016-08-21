@@ -29,7 +29,7 @@ export default (
         <Route path={"/contractors/new"} component={NewContractor} />
       </Route>
       <Route name="userAccount" path={"/my-account"} component={UserProfileContainer}>
-        <Route path={"/my-account/my-bookmarked"} component={BookMarkListContainer} />
+        {/* <Route path={"/my-account/my-bookmarked"} component={BookMarkListContainer} /> */}
       </Route>
       <Route path={"*"} component={NoMatch} />
     </Route>

@@ -10,9 +10,6 @@ const styles = {
 export const SideMenu = ({ bookmark, handleTabActive, tabActive }) => {
   const handleClickSideMenu = num => {
     handleTabActive(num);
-    if (num === 1) {
-      browserHistory.push('/my-account/my-bookmarked');
-    }
   };
   return (
     <div className="ui vertical menu left fixed" style={styles.menu}>

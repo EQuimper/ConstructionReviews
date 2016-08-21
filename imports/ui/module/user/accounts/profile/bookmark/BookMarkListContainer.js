@@ -6,7 +6,6 @@ import { BookMarkList } from './BookMarkList';
 export default createContainer(() => {
   Meteor.subscribe('getContractorsBookmarkedFromUser');
   return {
-    contractors: Contractors.find().fetch(),
-    user: Meteor.user()
+    contractors: Contractors.find().fetch()
   };
 }, BookMarkList);

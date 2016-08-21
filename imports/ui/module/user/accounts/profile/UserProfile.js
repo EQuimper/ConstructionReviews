@@ -1,13 +1,14 @@
 import React, { Component, PropTypes } from 'react';
-
+// import { Meteor } from 'meteor/meteor';
 import { LoadingPage } from '../../../../layouts/LoadingPage';
 import { SideMenu } from './SideMenu';
+import { BookMarkList } from './bookmark/BookMarkList';
 
 export class UserProfile extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      tabActive: null,
+      tabActive: null
     };
   }
 
@@ -16,8 +17,22 @@ export class UserProfile extends Component {
       tabActive: tab
     });
   }
+
   render() {
-    const { user, contractors, children } = this.props;
+    const handleRenderTab = () => {
+      const { tabActive } = this.state;
+      if (tabActive === 1) {
+        return (
+          <BookMarkList
+            contractors={this.props.contractors}
+            ref={ref => this.BookMarkList = ref}
+          />
+        );
+      } else {
+        return <h1>Welcome {this.props.user.username}</h1>;
+      }
+    };
+    const { user, contractors } = this.props;
     if (!user) return <LoadingPage />;
     return (
       <div className="ui grid">
@@ -30,7 +45,7 @@ export class UserProfile extends Component {
             />
           </div>
           <div className="ten wide column">
-            {children}
+            {handleRenderTab()}
           </div>
         </div>
       </div>
@@ -40,5 +55,6 @@ export class UserProfile extends Component {
 
 UserProfile.propTypes = {
   user: PropTypes.object,
-  contractors: PropTypes.array
+  contractors: PropTypes.array,
+  children: PropTypes.elem
 };

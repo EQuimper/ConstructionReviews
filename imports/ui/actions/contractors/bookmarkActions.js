@@ -16,3 +16,10 @@ export const removeContractorToBookmarks = id => {
     payload: id,
   };
 };
+
+export const giveContractorBookmarkedLength = () => {
+  return {
+    type: types.GIVE_CONTRACTOR_BOOKMARKED_LENGTH,
+    payload: length
+  };
+};
