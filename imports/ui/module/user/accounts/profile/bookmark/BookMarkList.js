@@ -2,43 +2,53 @@ import React, { PropTypes } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { browserHistory } from 'react-router';
 
-export const BookMarkList = ({ contractor }) => {
+export const BookMarkList = ({ contractors }) => {
   const handleRemoveBookmark = id => Meteor.call('removeContractorToBookmark', id);
+  if (contractors.length === 0) {
+    return <h3 style={{ textAlign: 'center' }}>No bookmark yet!</h3>;
+  }
   return (
-    <div className="item">
-      <div className="ui tiny image">
-        <img src="http://semantic-ui.com/images/wireframe/image.png" alt={contractor.name} />
-      </div>
-      <div
-        className="content"
-        onClick={() => browserHistory.push(`/contractors/profile/${contractor.name}`)}
-      >
-        <div className="header">{contractor.name}</div>
-        <div className="meta">
-          <span>$1200</span>
-          <span>1 Month</span>
-        </div>
-        <div className="description">
-          <p></p>
-        </div>
-      </div>
-      <div className="extra">
-        <div
-          onClick={() => handleRemoveBookmark(contractor._id)}
-          className="circular ui right floated vertical animated button red inverted"
-        >
-          <div className="visible content">
-            <i className="trash outline icon" />
+    <div>
+      <h2 style={{ textAlign: 'center' }}>My Bookmarked</h2>
+      <div className="ui link items divided">
+        {contractors.map((contractor, i) => (
+          <div className="item" key={i}>
+            <div className="ui tiny image">
+              <img src="http://semantic-ui.com/images/wireframe/image.png" alt={contractor.name} />
+            </div>
+            <div
+              className="content"
+              onClick={() => browserHistory.push(`/contractors/profile/${contractor.name}`)}
+            >
+              <div className="header">{contractor.name}</div>
+              <div className="meta">
+                <span>$1200</span>
+                <span>1 Month</span>
+              </div>
+              <div className="description">
+                <p></p>
+              </div>
+            </div>
+            <div className="extra">
+              <div
+                onClick={() => handleRemoveBookmark(contractor._id)}
+                className="circular ui right floated vertical animated button red inverted"
+              >
+                <div className="visible content">
+                  <i className="trash outline icon" />
+                </div>
+                <div className="hidden content">
+                  <i className="trash icon" />
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="hidden content">
-            <i className="trash icon" />
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );
 };
 
 BookMarkList.propTypes = {
-  contractor: PropTypes.object
+  contractors: PropTypes.array
 };

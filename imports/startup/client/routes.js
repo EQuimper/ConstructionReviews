@@ -14,6 +14,7 @@ import { Login } from '../../ui/module/user/accounts/login/Login';
 import ListContractorsContainer from '../../ui/module/contractors/list/ListContractorsContainer';
 import ContractorProfileContainer from '../../ui/module/contractors/profile/ContractorProfileContainer';
 import UserProfileContainer from '../../ui/module/user/accounts/profile/UserProfileContainer';
+import BookMarkListContainer from '../../ui/module/user/accounts/profile/bookmark/BookMarkListContainer';
 
 export default (
   <Router history={history}>
@@ -27,8 +28,8 @@ export default (
         <Route path={"/contractors/profile/:name"} component={ContractorProfileContainer} />
         <Route path={"/contractors/new"} component={NewContractor} />
       </Route>
-      <Route name="userAccount" path={"/my-account"}>
-        <IndexRoute component={UserProfileContainer} />
+      <Route name="userAccount" path={"/my-account"} component={UserProfileContainer}>
+        <Route path={"/my-account/my-bookmarked"} component={BookMarkListContainer} />
       </Route>
       <Route path={"*"} component={NoMatch} />
     </Route>
