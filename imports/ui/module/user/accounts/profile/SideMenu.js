@@ -1,5 +1,5 @@
-import React, { Component, PropTypes } from 'react';
-import { browserHistory } from 'react-router';
+import React, { PropTypes } from 'react';
+// import { browserHistory } from 'react-router';
 
 const styles = {
   menu: {
@@ -46,5 +46,7 @@ export const SideMenu = ({ bookmark, handleTabActive, tabActive }) => {
 
 
 SideMenu.propTypes = {
-  bookmark: PropTypes.number
+  bookmark: PropTypes.number,
+  handleTabActive: PropTypes.func,
+  tabActive: PropTypes.number
 };

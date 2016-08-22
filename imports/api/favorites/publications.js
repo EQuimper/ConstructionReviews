@@ -9,3 +9,9 @@ Meteor.publish('getContractorsBookmarkedFromUser', function() {
   if (data) return data;
   return this.ready();
 });
+
+Meteor.publish('getBookmarkedCount', function() {
+  const favorites = Favorites.find({ userId: this.userId });
+  if (favorites) return favorites;
+  return this.ready();
+});

@@ -32,14 +32,14 @@ export class UserProfile extends Component {
         return <h1>Welcome {this.props.user.username}</h1>;
       }
     };
-    const { user, contractors } = this.props;
+    const { user, length } = this.props;
     if (!user) return <LoadingPage />;
     return (
       <div className="ui grid">
         <div className="four column row">
           <div className="four wide column">
             <SideMenu
-              bookmark={contractors.length}
+              bookmark={length}
               tabActive={this.state.tabActive}
               handleTabActive={tab => this.handleTabActive(tab)}
             />
@@ -54,7 +54,8 @@ export class UserProfile extends Component {
 }
 
 UserProfile.propTypes = {
-  user: PropTypes.object,
   contractors: PropTypes.array,
+  user: PropTypes.object,
+  length: PropTypes.number,
   children: PropTypes.elem
 };
